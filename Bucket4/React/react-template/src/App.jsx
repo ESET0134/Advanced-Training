@@ -1,6 +1,10 @@
 import { useTranslation } from 'react-i18next';
 import { initDb } from './repo/indexedDb';
 import Form from './components/Form';
+import { Provider } from 'react-redux';
+import RouterSetup from './router/RouterSetup';
+import { store, persistedStore } from './redux/store';
+import { PersistGate } from 'redux-persist/integration/react';
 
 function App() {
     // const {t,i18n} = useTranslation();
@@ -19,7 +23,16 @@ function App() {
     //     <button onClick={()=>{insertSomeData()}}>Add User</button>
     //   </div>
     // </div>;
-    return <Form/>
+    // return <Form/>
+    return (
+        <>
+            <Provider store={store}>
+                <PersistGate persistor={persistedStore}>
+                    <RouterSetup />
+                </PersistGate>
+            </Provider>
+        </>
+    );
 }
 
 export default App;
