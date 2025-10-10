@@ -14,7 +14,7 @@
             new Student 
             {
                 studentID = 2,
-                name = "Test",
+                name = "Test2",
                 age = 2,
                 email = "dsckjbdsc"
             }
