@@ -8,5 +8,7 @@ namespace College_App.Model
         public string name { get; set; }
         public int age { get; set; }
         public string email { get; set; }
+        public string password { get; set; }
+        public string reenterpassword { get; set; }
     }
 }

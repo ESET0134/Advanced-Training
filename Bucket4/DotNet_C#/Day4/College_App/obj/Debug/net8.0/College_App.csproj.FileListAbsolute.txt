@@ -22,12 +22,6 @@ C:\Users\HP\OneDrive\Desktop\Training\Advanced-Training\Bucket4\DotNet_C#\Day4\C
 C:\Users\HP\OneDrive\Desktop\Training\Advanced-Training\Bucket4\DotNet_C#\Day4\College_App\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\HP\OneDrive\Desktop\Training\Advanced-Training\Bucket4\DotNet_C#\Day4\College_App\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\HP\OneDrive\Desktop\Training\Advanced-Training\Bucket4\DotNet_C#\Day4\College_App\obj\Debug\net8.0\staticwebassets.build.endpoints.json
-C:\Users\HP\OneDrive\Desktop\Training\Advanced-Training\Bucket4\DotNet_C#\Day4\College_App\obj\Debug\net8.0\staticwebassets\msbuild.College_App.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Users\HP\OneDrive\Desktop\Training\Advanced-Training\Bucket4\DotNet_C#\Day4\College_App\obj\Debug\net8.0\staticwebassets\msbuild.College_App.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
-C:\Users\HP\OneDrive\Desktop\Training\Advanced-Training\Bucket4\DotNet_C#\Day4\College_App\obj\Debug\net8.0\staticwebassets\msbuild.build.College_App.props
-C:\Users\HP\OneDrive\Desktop\Training\Advanced-Training\Bucket4\DotNet_C#\Day4\College_App\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.College_App.props
-C:\Users\HP\OneDrive\Desktop\Training\Advanced-Training\Bucket4\DotNet_C#\Day4\College_App\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.College_App.props
-C:\Users\HP\OneDrive\Desktop\Training\Advanced-Training\Bucket4\DotNet_C#\Day4\College_App\obj\Debug\net8.0\staticwebassets.pack.json
 C:\Users\HP\OneDrive\Desktop\Training\Advanced-Training\Bucket4\DotNet_C#\Day4\College_App\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\HP\OneDrive\Desktop\Training\Advanced-Training\Bucket4\DotNet_C#\Day4\College_App\obj\Debug\net8.0\College_.D7A28121.Up2Date
 C:\Users\HP\OneDrive\Desktop\Training\Advanced-Training\Bucket4\DotNet_C#\Day4\College_App\obj\Debug\net8.0\College_App.dll
@@ -35,3 +29,8 @@ C:\Users\HP\OneDrive\Desktop\Training\Advanced-Training\Bucket4\DotNet_C#\Day4\C
 C:\Users\HP\OneDrive\Desktop\Training\Advanced-Training\Bucket4\DotNet_C#\Day4\College_App\obj\Debug\net8.0\College_App.pdb
 C:\Users\HP\OneDrive\Desktop\Training\Advanced-Training\Bucket4\DotNet_C#\Day4\College_App\obj\Debug\net8.0\College_App.genruntimeconfig.cache
 C:\Users\HP\OneDrive\Desktop\Training\Advanced-Training\Bucket4\DotNet_C#\Day4\College_App\obj\Debug\net8.0\ref\College_App.dll
+C:\Users\HP\OneDrive\Desktop\Training\Advanced-Training\Bucket4\DotNet_C#\Day4\College_App\obj\Debug\net8.0\rpswa.dswa.cache.json
+C:\Users\HP\OneDrive\Desktop\Training\Advanced-Training\Bucket4\DotNet_C#\Day4\College_App\obj\Debug\net8.0\rjimswa.dswa.cache.json
+C:\Users\HP\OneDrive\Desktop\Training\Advanced-Training\Bucket4\DotNet_C#\Day4\College_App\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+C:\Users\HP\OneDrive\Desktop\Training\Advanced-Training\Bucket4\DotNet_C#\Day4\College_App\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
+C:\Users\HP\OneDrive\Desktop\Training\Advanced-Training\Bucket4\DotNet_C#\Day4\College_App\obj\Debug\net8.0\staticwebassets.build.json.cache

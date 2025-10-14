@@ -9,10 +9,70 @@ namespace College_App.Controllers
     [ApiController]
     public class CollegeApp : ControllerBase
     {
-        [HttpGet]
+        /*[HttpGet]
         public IEnumerable<Student> getStudents()
         {
             return collegeRepository.students;
+        }*/
+
+        [HttpGet]
+        [Route("All")]
+        public ActionResult<IEnumerable<studentDTO>> getstudents()
+        {
+            var students = collegeRepository.students.Select(s => new studentDTO()
+            {
+                studentID = s.studentID,
+                name = s.name,
+                age = s.age,
+                email = s.email,
+                password = s.password,
+                reenterpassword = s.reenterpassword
+            });
+            return Ok(students);
+        }
+
+        [HttpGet("{id:Int}", Name = "getstudentsbyid")]
+        public ActionResult<studentDTO> getstudentsbyid(int id)
+        {
+            if (id == 0)
+            {
+                return BadRequest();
+            }
+            var students = collegeRepository.students.Where(n => n.studentID == id).FirstOrDefault();
+            var studentDTO = new studentDTO
+            {
+                studentID = students.studentID,
+                name = students.name,
+                age = students.age,
+                email = students.email
+            };
+
+            if (studentDTO == null)
+            {
+                return NotFound($"ID: {id} not found");
+            }
+            return Ok(students);
+        }
+
+        [HttpPost("Create")]
+        public ActionResult<studentDTO> CreateStudent([FromBody] studentDTO Model)
+        {
+            if (Model == null)
+            {
+                return BadRequest();
+            }
+            int newid = collegeRepository.students.LastOrDefault().studentID + 1;
+            Student studentnew = new Student
+            {
+                studentID = newid,
+                name = Model.name,
+                age = Model.age,
+                email = Model.email,
+                password = Model.password,
+                reenterpassword = Model.reenterpassword
+            };
+            collegeRepository.students.Add(studentnew);
+            return Ok(Model);
         }
 
         /*[HttpGet("{id:Int}",Name = "getstudentsbyid")]
@@ -41,7 +101,7 @@ namespace College_App.Controllers
             return true;
         }
 
-        [HttpGet("{id:Int}", Name = "getstudentsbyid")]
+        /*[HttpGet("{id:Int}", Name = "getstudentsbyid")]
         public ActionResult<IEnumerable<Student>> getstudentsbyid(int id)
         {
             if (id == 0)
@@ -54,7 +114,7 @@ namespace College_App.Controllers
                 return NotFound($"ID: {id} not found");
             }
             return Ok(students);
-        }
+        }*/
 
         [HttpGet("{Name:Alpha}", Name = "getstudentsbyname")]
         public ActionResult<Student> getstudentsbyname(string Name)

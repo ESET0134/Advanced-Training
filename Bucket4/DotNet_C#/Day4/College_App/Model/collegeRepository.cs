@@ -9,14 +9,18 @@
                 studentID = 1,
                 name = "Test",
                 age = 1,
-                email = "shivam@gmail.com"
+                email = "shivam@gmail.com",
+                password = "Test",
+                reenterpassword = "Test"
             },
-            new Student 
+            new Student
             {
                 studentID = 2,
                 name = "Test2",
                 age = 2,
-                email = "dsckjbdsc"
+                email = "dsckjbdsc",
+                password = "Test",
+                reenterpassword = "Test"
             }
 
         };
