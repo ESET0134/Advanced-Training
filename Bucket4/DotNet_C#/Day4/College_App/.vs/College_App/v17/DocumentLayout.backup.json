@@ -5,22 +5,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{57FC1BB8-80CB-4EE9-953D-F3246A5A38F6}|College_App.csproj|c:\\users\\hp\\onedrive\\desktop\\training\\advanced-training\\bucket4\\dotnet_c#\\day4\\college_app\\controllers\\collegeapp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{57FC1BB8-80CB-4EE9-953D-F3246A5A38F6}|College_App.csproj|solutionrelative:controllers\\collegeapp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{57FC1BB8-80CB-4EE9-953D-F3246A5A38F6}|College_App.csproj|c:\\users\\hp\\onedrive\\desktop\\training\\advanced-training\\bucket4\\dotnet_c#\\day4\\college_app\\model\\validators\\datecheckattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{57FC1BB8-80CB-4EE9-953D-F3246A5A38F6}|College_App.csproj|solutionrelative:model\\validators\\datecheckattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{57FC1BB8-80CB-4EE9-953D-F3246A5A38F6}|College_App.csproj|c:\\users\\hp\\onedrive\\desktop\\training\\advanced-training\\bucket4\\dotnet_c#\\day4\\college_app\\model\\studentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{57FC1BB8-80CB-4EE9-953D-F3246A5A38F6}|College_App.csproj|solutionrelative:model\\studentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{57FC1BB8-80CB-4EE9-953D-F3246A5A38F6}|College_App.csproj|c:\\users\\hp\\onedrive\\desktop\\training\\advanced-training\\bucket4\\dotnet_c#\\day4\\college_app\\model\\collegerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{57FC1BB8-80CB-4EE9-953D-F3246A5A38F6}|College_App.csproj|solutionrelative:model\\collegerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{57FC1BB8-80CB-4EE9-953D-F3246A5A38F6}|College_App.csproj|c:\\users\\hp\\onedrive\\desktop\\training\\advanced-training\\bucket4\\dotnet_c#\\day4\\college_app\\model\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{57FC1BB8-80CB-4EE9-953D-F3246A5A38F6}|College_App.csproj|solutionrelative:model\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,33 +14,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "DateCheckAttribute.cs",
-              "DocumentMoniker": "C:\\Users\\HP\\OneDrive\\Desktop\\Training\\Advanced-Training\\Bucket4\\DotNet_C#\\Day4\\College_App\\Model\\Validators\\DateCheckAttribute.cs",
-              "RelativeDocumentMoniker": "Model\\Validators\\DateCheckAttribute.cs",
-              "ToolTip": "C:\\Users\\HP\\OneDrive\\Desktop\\Training\\Advanced-Training\\Bucket4\\DotNet_C#\\Day4\\College_App\\Model\\Validators\\DateCheckAttribute.cs",
-              "RelativeToolTip": "Model\\Validators\\DateCheckAttribute.cs",
-              "ViewState": "AgIAACIAAAAAAAAAAAAqwDIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-13T09:26:44.209Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "studentDTO.cs",
-              "DocumentMoniker": "C:\\Users\\HP\\OneDrive\\Desktop\\Training\\Advanced-Training\\Bucket4\\DotNet_C#\\Day4\\College_App\\Model\\studentDTO.cs",
-              "RelativeDocumentMoniker": "Model\\studentDTO.cs",
-              "ToolTip": "C:\\Users\\HP\\OneDrive\\Desktop\\Training\\Advanced-Training\\Bucket4\\DotNet_C#\\Day4\\College_App\\Model\\studentDTO.cs",
-              "RelativeToolTip": "Model\\studentDTO.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABcAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-13T04:24:14.584Z"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -65,34 +24,10 @@
               "RelativeDocumentMoniker": "Controllers\\CollegeApp.cs",
               "ToolTip": "C:\\Users\\HP\\OneDrive\\Desktop\\Training\\Advanced-Training\\Bucket4\\DotNet_C#\\Day4\\College_App\\Controllers\\CollegeApp.cs",
               "RelativeToolTip": "Controllers\\CollegeApp.cs",
-              "ViewState": "AgIAAJMAAAAAAAAAAAAAwKAAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAIcAAAAAAAAAAAAowAMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-09T09:57:40.669Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "collegeRepository.cs",
-              "DocumentMoniker": "C:\\Users\\HP\\OneDrive\\Desktop\\Training\\Advanced-Training\\Bucket4\\DotNet_C#\\Day4\\College_App\\Model\\collegeRepository.cs",
-              "RelativeDocumentMoniker": "Model\\collegeRepository.cs",
-              "ToolTip": "C:\\Users\\HP\\OneDrive\\Desktop\\Training\\Advanced-Training\\Bucket4\\DotNet_C#\\Day4\\College_App\\Model\\collegeRepository.cs",
-              "RelativeToolTip": "Model\\collegeRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-09T09:53:34.529Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Student.cs",
-              "DocumentMoniker": "C:\\Users\\HP\\OneDrive\\Desktop\\Training\\Advanced-Training\\Bucket4\\DotNet_C#\\Day4\\College_App\\Model\\Student.cs",
-              "RelativeDocumentMoniker": "Model\\Student.cs",
-              "ToolTip": "C:\\Users\\HP\\OneDrive\\Desktop\\Training\\Advanced-Training\\Bucket4\\DotNet_C#\\Day4\\College_App\\Model\\Student.cs",
-              "RelativeToolTip": "Model\\Student.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-09T09:48:04.824Z"
             }
           ]
         }
