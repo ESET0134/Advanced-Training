@@ -1,6 +1,7 @@
 ﻿using College_App.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 
 namespace College_App.Controllers
@@ -129,6 +130,59 @@ namespace College_App.Controllers
                 return NotFound($"Student: {Name} not found");
             }
             return Ok(students);
+        }
+
+        [HttpPut]
+        public ActionResult<studentDTO> updateStudent([FromBody] studentDTO Model)
+        {
+            if (Model == null || Model.studentID<=0)
+            {
+                return BadRequest();
+            }
+            var existingStudent = collegeRepository.students.Where(s => s.studentID == Model.studentID).FirstOrDefault();
+            if (existingStudent == null)
+            {
+                return NotFound($"The student with id {Model.studentID} not found");
+            }
+            existingStudent.name = Model.name;
+            existingStudent.age = Model.age;
+            existingStudent.email = Model.email;
+            existingStudent.password = Model.password;
+            existingStudent.reenterpassword = Model.reenterpassword;
+
+            return Ok(existingStudent);
+        }
+
+        [HttpPatch]
+        [Route("{id:int}/UpdatePartial")]
+        public ActionResult updateStudentPartial(int id, [FromBody] JsonPatchDocument<studentDTO> patchDocument)
+        {
+            if (patchDocument == null || id <= 0)
+            {
+                return BadRequest();
+            }
+            var existingStudent = collegeRepository.students.Where(s => s.studentID == id).FirstOrDefault();
+            if (existingStudent == null)
+            {
+                return NotFound($"The student with id {id} not found");
+            }
+            var studentDto = new studentDTO()
+            {
+                studentID = existingStudent.studentID,
+                name = existingStudent.name,
+                age = existingStudent.age,
+                email = existingStudent.email
+            };
+            patchDocument.ApplyTo(studentDto, ModelState);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            existingStudent.name = studentDto.name;
+            existingStudent.age = studentDto.age;
+            existingStudent.email = studentDto.email;
+
+            return NoContent();
         }
     }
 }

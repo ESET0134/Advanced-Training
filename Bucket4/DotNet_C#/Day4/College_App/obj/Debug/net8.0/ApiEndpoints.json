@@ -27,6 +27,32 @@
   },
   {
     "ContainingType": "College_App.Controllers.CollegeApp",
+    "Method": "updateStudent",
+    "RelativePath": "api/CollegeApp",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Model",
+        "Type": "College_App.Model.studentDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "College_App.Model.studentDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "College_App.Controllers.CollegeApp",
     "Method": "getstudentsbyid",
     "RelativePath": "api/CollegeApp/{id}",
     "HttpMethod": "GET",
@@ -51,6 +77,27 @@
       }
     ],
     "EndpointName": "getstudentsbyid"
+  },
+  {
+    "ContainingType": "College_App.Controllers.CollegeApp",
+    "Method": "updateStudentPartial",
+    "RelativePath": "api/CollegeApp/{id}/UpdatePartial",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "patchDocument",
+        "Type": "Microsoft.AspNetCore.JsonPatch.Operations.Operation[]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "College_App.Controllers.CollegeApp",
