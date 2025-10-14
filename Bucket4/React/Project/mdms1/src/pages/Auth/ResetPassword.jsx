@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import AuthHeader from '../../components/layout/AuthHeader';
+import { Link } from 'react-router-dom';
+import Header from '../../components/layout/Header/Header';
 import { useTranslation } from 'react-i18next';
 
 export default function ResetPassword() {
@@ -18,12 +19,9 @@ export default function ResetPassword() {
 
   return (
     <div className="w-screen min-h-screen flex flex-col">
-      <AuthHeader />
+      <Header />
       <div className="flex flex-1 justify-center items-center bg-gray-100 dark:bg-gray-900">
-        <form
-          onSubmit={handleSubmit}
-          className="w-full max-w-sm text-center"
-        >
+        <form onSubmit={handleSubmit} className="w-full max-w-sm text-center">
           <h2 className="text-lg mb-4 text-gray-900 dark:text-white">
             {t('Reset password')}
           </h2>
@@ -47,11 +45,17 @@ export default function ResetPassword() {
           />
 
           <button
-  type="submit"
-  className="border border-black text-black py-1 rounded-full bg-transparent dark:text-white dark:border-white"
->
-  {t('Update password')}
-</button>
+            type="submit"
+            className="border border-black text-black py-1 rounded-full bg-transparent dark:text-white dark:border-white"
+          >
+            {t('Update password')}
+          </button>
+          <Link
+            to="/"
+            className="text-blue-600 dark:text-blue-400 flex justify-center mt-4"
+          >
+            {t('Login')}
+          </Link>
         </form>
       </div>
     </div>
