@@ -1,20 +1,36 @@
-﻿using College_App.Model;
+﻿using College_App.Data;
+using College_App.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using College_App.MyLogger;
+using Microsoft.EntityFrameworkCore;
 
 namespace College_App.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+
     public class CollegeApp : ControllerBase
     {
+        private readonly IMyLogger _mylogger;
+
+        private readonly CollegeDBContext _dbcontext;
+
+        public CollegeApp(IMyLogger MyLogger, CollegeDBContext dbcontext)
+        {
+            _mylogger = MyLogger;
+            _dbcontext = dbcontext;
+        }
+
+
         /*[HttpGet]
         public IEnumerable<Student> getStudents()
         {
             return collegeRepository.students;
-        }*/
+        }*//*
 
         [HttpGet]
         [Route("All")]
@@ -76,23 +92,23 @@ namespace College_App.Controllers
             return Ok(Model);
         }
 
-        /*[HttpGet("{id:Int}",Name = "getstudentsbyid")]
+        *//*[HttpGet("{id:Int}",Name = "getstudentsbyid")]
         //[HttpGet]
         //[Route("getstudentsbyid")]
         public Student getstudentsbyid(int id)
         {
             return collegeRepository.students.Where(n => n.studentID == id).FirstOrDefault();
-        }*/
+        }*//*
 
         //[HttpGet("{Name:Alpha}", Name = "getstudentsbyname")]
-        /*
+        *//*
         [HttpGet]
         [Route ("getstudentsbyname")]
         public Student getstudentsbyname(string Name)
         {
             return collegeRepository.students.Where(n => n.name == Name).FirstOrDefault();
         }
-        */
+        *//*
 
         [HttpDelete]
         public bool deleteStudent(int id)
@@ -102,7 +118,7 @@ namespace College_App.Controllers
             return true;
         }
 
-        /*[HttpGet("{id:Int}", Name = "getstudentsbyid")]
+        *//*[HttpGet("{id:Int}", Name = "getstudentsbyid")]
         public ActionResult<IEnumerable<Student>> getstudentsbyid(int id)
         {
             if (id == 0)
@@ -115,7 +131,7 @@ namespace College_App.Controllers
                 return NotFound($"ID: {id} not found");
             }
             return Ok(students);
-        }*/
+        }*//*
 
         [HttpGet("{Name:Alpha}", Name = "getstudentsbyname")]
         public ActionResult<Student> getstudentsbyname(string Name)
@@ -184,5 +200,6 @@ namespace College_App.Controllers
 
             return NoContent();
         }
+    }*/
     }
 }
