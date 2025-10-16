@@ -1,0 +1,9 @@
+{
+  "products": [
+    { "id": 1, "name": "Laptop", "sales": 120 },
+    { "id": 2, "name": "Smartphone", "sales": 200 },
+    { "id": 3, "name": "Headphones", "sales": 80 },
+    { "id": 4, "name": "Keyboard", "sales": 50 },
+    { "id": 5, "name": "Monitor", "sales": 150 }
+  ]
+}
