@@ -1,8 +1,34 @@
 [
   {
     "ContainingType": "College_App.Controllers.CollegeApp",
+    "Method": "CreateStudent",
+    "RelativePath": "api/CollegeApp/Create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Model",
+        "Type": "College_App.Data.Student",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "College_App.Model.studentDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "College_App.Controllers.CollegeApp",
     "Method": "deleteStudent",
-    "RelativePath": "api/CollegeApp",
+    "RelativePath": "api/CollegeApp/Delete",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -27,109 +53,8 @@
   },
   {
     "ContainingType": "College_App.Controllers.CollegeApp",
-    "Method": "updateStudent",
-    "RelativePath": "api/CollegeApp",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "Model",
-        "Type": "College_App.Model.studentDTO",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "College_App.Model.studentDTO",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "College_App.Controllers.CollegeApp",
-    "Method": "getstudentsbyid",
-    "RelativePath": "api/CollegeApp/{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "College_App.Model.studentDTO",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ],
-    "EndpointName": "getstudentsbyid"
-  },
-  {
-    "ContainingType": "College_App.Controllers.CollegeApp",
-    "Method": "updateStudentPartial",
-    "RelativePath": "api/CollegeApp/{id}/UpdatePartial",
-    "HttpMethod": "PATCH",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "patchDocument",
-        "Type": "Microsoft.AspNetCore.JsonPatch.Operations.Operation[]",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "College_App.Controllers.CollegeApp",
-    "Method": "getstudentsbyname",
-    "RelativePath": "api/CollegeApp/{Name}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "Name",
-        "Type": "System.String",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "College_App.Model.Student",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ],
-    "EndpointName": "getstudentsbyname"
-  },
-  {
-    "ContainingType": "College_App.Controllers.CollegeApp",
     "Method": "getstudents",
-    "RelativePath": "api/CollegeApp/All",
+    "RelativePath": "api/CollegeApp/Students",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -147,29 +72,13 @@
     ]
   },
   {
-    "ContainingType": "College_App.Controllers.CollegeApp",
-    "Method": "CreateStudent",
-    "RelativePath": "api/CollegeApp/Create",
-    "HttpMethod": "POST",
+    "ContainingType": "College_App.Controllers.Logme",
+    "Method": "index",
+    "RelativePath": "api/Logme",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [
-      {
-        "Name": "Model",
-        "Type": "College_App.Model.studentDTO",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "College_App.Model.studentDTO",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
+    "Parameters": [],
+    "ReturnTypes": []
   }
 ]

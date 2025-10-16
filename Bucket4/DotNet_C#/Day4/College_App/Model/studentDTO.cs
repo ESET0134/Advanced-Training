@@ -16,6 +16,7 @@ namespace College_App.Model
         public int age { get; set; }
         [EmailAddress(ErrorMessage ="write correct email")]
         public string email { get; set; }
+        public string City { get; set; }
         [SpaceCheck]
         public string password { get; set; }
         [Compare(nameof(password))]

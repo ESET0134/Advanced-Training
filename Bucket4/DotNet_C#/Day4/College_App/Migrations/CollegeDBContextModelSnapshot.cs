@@ -42,11 +42,22 @@ namespace College_App.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Students");
+                    b.ToTable("Student", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Age = 23,
+                            City = "Blr",
+                            Email = "shruti@gmail.com",
+                            Name = "Shruti"
+                        });
                 });
 
             modelBuilder.Entity("College_App.Data.course", b =>
