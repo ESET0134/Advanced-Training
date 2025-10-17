@@ -10,7 +10,7 @@
         "tags": [
           "WeatherForecast"
         ],
-        "operationId": "GetWeatherForecast",
+        "operationId": "GetStudentDetails",
         "responses": {
           "200": {
             "description": "OK",

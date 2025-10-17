@@ -26,13 +26,18 @@ public partial class CollegeContext : DbContext
             entity.ToTable("Course");
 
             entity.Property(e => e.Rank).HasColumnName("rank");
+            entity.Property(e => e.CourseName).HasColumnName("CourseName");
         });
 
         modelBuilder.Entity<Student>(entity =>
         {
             entity.ToTable("Student");
 
-            entity.Property(e => e.Name).HasMaxLength(50);
+            entity.Property(e => e.Id).HasColumnName("Id");
+            entity.Property(e => e.Name).HasColumnName("Name").HasMaxLength(50);
+            entity.Property(e => e.Email).HasColumnName("Email");
+            entity.Property(e => e.Age).HasColumnName("Age");
+            entity.Property(e => e.City).HasColumnName("City");
         });
 
         OnModelCreatingPartial(modelBuilder);
