@@ -44,7 +44,9 @@ export default function ResetPassword() {
           onSubmit={handleSubmit}
           className="w-full max-w-sm text-center bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700"
         >
-          <h2 className="text-xl mb-4 text-black dark:text-white">Reset Password</h2>
+          <h2 className="text-xl mb-4 text-black dark:text-white">
+            Reset Password
+          </h2>
 
           <input
             type="password"

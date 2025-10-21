@@ -19,7 +19,7 @@ export default function ForgotPassword() {
     sessionStorage.setItem('reset_email', email);
     navigate('/reset-password');
   };
-  
+
   return (
     <div className="w-screen min-h-screen flex flex-col">
       <Header />
@@ -42,8 +42,11 @@ export default function ForgotPassword() {
           <Link to="/" className="text-blue-600 dark:text-blue-400 flex mb-4">
             {t('Login')}
           </Link>
-          <button type="submit" className="border border-black text-black py-1 px-16 rounded-full bg-transparent dark:text-white dark:border-white">
-              {t('Reset Password')}
+          <button
+            type="submit"
+            className="border border-black text-black py-1 px-16 rounded-full bg-transparent dark:text-white dark:border-white"
+          >
+            {t('Reset Password')}
           </button>
         </form>
       </div>

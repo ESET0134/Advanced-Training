@@ -10,7 +10,9 @@ export default function Logs() {
         <EndUserSidebar />
         <main className="flex-1 p-6">
           <h1 className="text-xl font-semibold">Logs</h1>
-          <p className="text-sm text-gray-600">Local logs, uploads and audit trail UI.</p>
+          <p className="text-sm text-gray-600">
+            Local logs, uploads and audit trail UI.
+          </p>
         </main>
       </div>
     </div>

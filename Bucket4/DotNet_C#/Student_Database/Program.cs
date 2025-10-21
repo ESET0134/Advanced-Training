@@ -1,5 +1,6 @@
 
 using Microsoft.EntityFrameworkCore;
+using Student_Database.Data.Repository;
 using Student_Database.Models;
 
 namespace Student_Database
@@ -11,6 +12,7 @@ namespace Student_Database
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+            builder.Services.AddScoped<IstudentRepository, StudentRepository>();
             builder.Services.AddDbContext<CollegeContext>(options =>
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("ConnectionDB"));

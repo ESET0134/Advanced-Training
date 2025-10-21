@@ -26,8 +26,7 @@ export const authService = {
    */
   login({ email, password, rememberMe }) {
     this.init();
-    const user =
-      JSON.parse(localStorage.getItem(STORAGE_KEY)) || DEFAULT_USER;
+    const user = JSON.parse(localStorage.getItem(STORAGE_KEY)) || DEFAULT_USER;
 
     if (email === user.email && password === user.password) {
       const storage = rememberMe ? localStorage : sessionStorage;
@@ -49,22 +48,18 @@ export const authService = {
 
   isAuthenticated() {
     return (
-      !!localStorage.getItem(TOKEN_KEY) ||
-      !!sessionStorage.getItem(TOKEN_KEY)
+      !!localStorage.getItem(TOKEN_KEY) || !!sessionStorage.getItem(TOKEN_KEY)
     );
   },
 
   getCurrentUser() {
     const localUser = localStorage.getItem(CURRENT_USER_KEY);
     const sessionUser = sessionStorage.getItem(CURRENT_USER_KEY);
-    return (
-      JSON.parse(localUser || sessionUser || 'null')
-    );
+    return JSON.parse(localUser || sessionUser || 'null');
   },
 
   updateProfile({ name, email, password }) {
-    const user =
-      JSON.parse(localStorage.getItem(STORAGE_KEY)) || DEFAULT_USER;
+    const user = JSON.parse(localStorage.getItem(STORAGE_KEY)) || DEFAULT_USER;
 
     const updated = {
       ...user,
