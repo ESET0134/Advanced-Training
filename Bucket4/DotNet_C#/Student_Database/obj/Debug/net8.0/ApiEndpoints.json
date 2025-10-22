@@ -28,6 +28,27 @@
   },
   {
     "ContainingType": "Student_Database.Controllers.StudentApp",
+    "Method": "UpdateStudentPartial",
+    "RelativePath": "StudentApp/{id}/UpdateStudent",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "patchDocument",
+        "Type": "Microsoft.AspNetCore.JsonPatch.Operations.Operation[]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Student_Database.Controllers.StudentApp",
     "Method": "getStudents",
     "RelativePath": "StudentApp/All",
     "HttpMethod": "GET",

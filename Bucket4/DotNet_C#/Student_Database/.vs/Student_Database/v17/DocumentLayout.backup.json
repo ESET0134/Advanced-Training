@@ -11,16 +11,12 @@
       "RelativeMoniker": "D:0:0:{5922EE07-4B7D-4504-850C-2F966F8330E4}|Student_Database.csproj|solutionrelative:data\\repository\\studentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5922EE07-4B7D-4504-850C-2F966F8330E4}|Student_Database.csproj|c:\\users\\hp\\onedrive\\desktop\\training\\advanced-training\\bucket4\\dotnet_c#\\student_database\\data\\repository\\istudentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5922EE07-4B7D-4504-850C-2F966F8330E4}|Student_Database.csproj|solutionrelative:data\\repository\\istudentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{5922EE07-4B7D-4504-850C-2F966F8330E4}|Student_Database.csproj|c:\\users\\hp\\onedrive\\desktop\\training\\advanced-training\\bucket4\\dotnet_c#\\student_database\\models\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5922EE07-4B7D-4504-850C-2F966F8330E4}|Student_Database.csproj|solutionrelative:models\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5922EE07-4B7D-4504-850C-2F966F8330E4}|Student_Database.csproj|c:\\users\\hp\\onedrive\\desktop\\training\\advanced-training\\bucket4\\dotnet_c#\\student_database\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5922EE07-4B7D-4504-850C-2F966F8330E4}|Student_Database.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5922EE07-4B7D-4504-850C-2F966F8330E4}|Student_Database.csproj|c:\\users\\hp\\onedrive\\desktop\\training\\advanced-training\\bucket4\\dotnet_c#\\student_database\\data\\repository\\istudentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5922EE07-4B7D-4504-850C-2F966F8330E4}|Student_Database.csproj|solutionrelative:data\\repository\\istudentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5922EE07-4B7D-4504-850C-2F966F8330E4}|Student_Database.csproj|c:\\users\\hp\\onedrive\\desktop\\training\\advanced-training\\bucket4\\dotnet_c#\\student_database\\models\\collegecontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -34,34 +30,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 3,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\HP\\OneDrive\\Desktop\\Training\\Advanced-Training\\Bucket4\\DotNet_C#\\Student_Database\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\HP\\OneDrive\\Desktop\\Training\\Advanced-Training\\Bucket4\\DotNet_C#\\Student_Database\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAwBsAAAAzAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-21T04:59:40.961Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "IstudentRepository.cs",
               "DocumentMoniker": "C:\\Users\\HP\\OneDrive\\Desktop\\Training\\Advanced-Training\\Bucket4\\DotNet_C#\\Student_Database\\Data\\Repository\\IstudentRepository.cs",
               "RelativeDocumentMoniker": "Data\\Repository\\IstudentRepository.cs",
               "ToolTip": "C:\\Users\\HP\\OneDrive\\Desktop\\Training\\Advanced-Training\\Bucket4\\DotNet_C#\\Student_Database\\Data\\Repository\\IstudentRepository.cs",
               "RelativeToolTip": "Data\\Repository\\IstudentRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAoAAAAnAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAsAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-21T04:33:55.084Z",
               "EditorCaption": ""
@@ -74,14 +53,14 @@
               "RelativeDocumentMoniker": "Data\\Repository\\StudentRepository.cs",
               "ToolTip": "C:\\Users\\HP\\OneDrive\\Desktop\\Training\\Advanced-Training\\Bucket4\\DotNet_C#\\Student_Database\\Data\\Repository\\StudentRepository.cs",
               "RelativeToolTip": "Data\\Repository\\StudentRepository.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAYwBkAAAAYAAAAAAAAAA==",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwB0AAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-21T04:31:23.958Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "Student.cs",
               "DocumentMoniker": "C:\\Users\\HP\\OneDrive\\Desktop\\Training\\Advanced-Training\\Bucket4\\DotNet_C#\\Student_Database\\Models\\Student.cs",
               "RelativeDocumentMoniker": "Models\\Student.cs",
@@ -98,22 +77,22 @@
               "Title": "StudentApp.cs",
               "DocumentMoniker": "C:\\Users\\HP\\OneDrive\\Desktop\\Training\\Advanced-Training\\Bucket4\\DotNet_C#\\Student_Database\\Controllers\\StudentApp.cs",
               "RelativeDocumentMoniker": "Controllers\\StudentApp.cs",
-              "ToolTip": "C:\\Users\\HP\\OneDrive\\Desktop\\Training\\Advanced-Training\\Bucket4\\DotNet_C#\\Student_Database\\Controllers\\StudentApp.cs",
-              "RelativeToolTip": "Controllers\\StudentApp.cs",
-              "ViewState": "AgIAAD4AAAAAAAAAAAAtwFUAAAAAAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\HP\\OneDrive\\Desktop\\Training\\Advanced-Training\\Bucket4\\DotNet_C#\\Student_Database\\Controllers\\StudentApp.cs*",
+              "RelativeToolTip": "Controllers\\StudentApp.cs*",
+              "ViewState": "AgIAAD4AAAAAAAAAAAAUwE8AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-16T09:26:18.466Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 4,
               "Title": "CollegeContext.cs",
               "DocumentMoniker": "C:\\Users\\HP\\OneDrive\\Desktop\\Training\\Advanced-Training\\Bucket4\\DotNet_C#\\Student_Database\\Models\\CollegeContext.cs",
               "RelativeDocumentMoniker": "Models\\CollegeContext.cs",
               "ToolTip": "C:\\Users\\HP\\OneDrive\\Desktop\\Training\\Advanced-Training\\Bucket4\\DotNet_C#\\Student_Database\\Models\\CollegeContext.cs",
               "RelativeToolTip": "Models\\CollegeContext.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAABMAAAAiAAAAAAAAAA==",
+              "ViewState": "AgIAABEAAAAAAAAAAAAAwBMAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-16T09:24:07.968Z",
               "EditorCaption": ""

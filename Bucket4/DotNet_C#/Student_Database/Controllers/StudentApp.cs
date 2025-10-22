@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Student_Database.Data.Repository;
@@ -24,18 +25,18 @@ namespace Student_Database.Controllers
         [ProducesResponseType(200)]
         public async Task<ActionResult<IEnumerable<Student>>> getStudents()
         {
-            var student = _IstudentRepository.GetAll();
+            var student = await _IstudentRepository.GetAll();
             return Ok(student);
         }
 
         [HttpGet("{id:Int}", Name = "getstudentsbyid")]
-        public ActionResult<IEnumerable<Student>> getstudentsbyid(int id)
+        public async Task<ActionResult<IEnumerable<Student>>> getstudentsbyid(int id)
         {
             if (id == 0)
             {
                 return BadRequest();
             }
-            var students = _IstudentRepository.GetStudentsByID(id);
+            var students = await _IstudentRepository.GetStudentsByID(id);
             if (students == null)
             {
                 return NotFound($"ID: {id} not found");
@@ -44,13 +45,13 @@ namespace Student_Database.Controllers
         }
 
         [HttpGet("GetDetailsByName")]
-        public ActionResult<IEnumerable<Student>> getstudentsbyName(string Name)
+        public async Task<ActionResult<IEnumerable<Student>>> getstudentsbyName(string Name)
         {
             if (Name == null)
             {
                 return BadRequest();
             }
-            var students = _IstudentRepository.GetStudentsByName(Name);
+            var students = await _IstudentRepository.GetStudentsByName(Name);
             if (students == null)
             {
                 return NotFound($"Name: {Name} not found");
@@ -59,7 +60,7 @@ namespace Student_Database.Controllers
         }
 
         [HttpPost("Create")]
-        public ActionResult<Student> CreateStudent([FromBody] Student Model)
+        public async Task<ActionResult<Student>> CreateStudent([FromBody] Student Model)
         {
             if (Model == null)
             {
@@ -72,38 +73,50 @@ namespace Student_Database.Controllers
                 Age = Model.Age,
                 City = Model.City
             };
-            var students = _IstudentRepository.CreateStudent(studentnew);
+            var students = await _IstudentRepository.CreateStudent(studentnew);
+            if (students == 0)
+                return StatusCode(500, "Create failed");
             return Ok(students);
         }
 
         [HttpDelete("Delete")]
-        public bool deleteStudent(int id)
+        public async Task<bool> deleteStudent(int id)
         {
-            return _IstudentRepository.DeleteStudent(id);
+            return await _IstudentRepository.DeleteStudent(id);
         }
 
         [HttpPatch]
         [Route("{id:int}/UpdateStudent")]
-        public ActionResult updateStudentPartial(int id, [FromBody] JsonPatchDocument<Student> patchDocument)
+        public async Task<IActionResult> UpdateStudentPartial(int id, [FromBody] JsonPatchDocument<Student> patchDocument)
         {
             if (patchDocument == null || id <= 0)
-            {
                 return BadRequest();
-            }
-            var existingStudent = _IstudentRepository.GetStudentsByID(id);
-            if (existingStudent == null)
+
+            var existing = await _IstudentRepository.GetStudentsByID(id);
+            if (existing == null)
+                return NotFound($"ID: {id} not found");
+
+            var studentToPatch = new Student
             {
-                return NotFound($"The student with id {id} not found");
-            }
-            var update = _IstudentRepository.UpdateStudent(existingStudent,patchDocument);
-            if (update == 1)
-            {
-                return Ok(update);
-            }
-            else
-            {
-                return BadRequest();
-            }
+                Id = existing.Id,
+                Name = existing.Name,
+                Email = existing.Email,
+                Age = existing.Age,
+                City = existing.City
+            };
+
+            patchDocument.ApplyTo(studentToPatch, ModelState);
+
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            if (!TryValidateModel(studentToPatch))
+                return BadRequest(ModelState);
+
+            var result = await _IstudentRepository.UpdateStudent(studentToPatch);
+            if (result == 0)
+                return StatusCode(500, "Update failed");
+
+            return NoContent();
         }
     }
 }

@@ -145,3 +145,7 @@ C:\Users\HP\OneDrive\Desktop\Training\Advanced-Training\Bucket4\DotNet_C#\Studen
 C:\Users\HP\OneDrive\Desktop\Training\Advanced-Training\Bucket4\DotNet_C#\Student_Database\obj\Debug\net8.0\Student_Database.pdb
 C:\Users\HP\OneDrive\Desktop\Training\Advanced-Training\Bucket4\DotNet_C#\Student_Database\obj\Debug\net8.0\Student_Database.genruntimeconfig.cache
 C:\Users\HP\OneDrive\Desktop\Training\Advanced-Training\Bucket4\DotNet_C#\Student_Database\obj\Debug\net8.0\ref\Student_Database.dll
+C:\Users\HP\OneDrive\Desktop\Training\Advanced-Training\Bucket4\DotNet_C#\Student_Database\bin\Debug\net8.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\HP\OneDrive\Desktop\Training\Advanced-Training\Bucket4\DotNet_C#\Student_Database\bin\Debug\net8.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\HP\OneDrive\Desktop\Training\Advanced-Training\Bucket4\DotNet_C#\Student_Database\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\HP\OneDrive\Desktop\Training\Advanced-Training\Bucket4\DotNet_C#\Student_Database\bin\Debug\net8.0\Newtonsoft.Json.Bson.dll

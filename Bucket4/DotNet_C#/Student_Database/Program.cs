@@ -18,7 +18,7 @@ namespace Student_Database
                 options.UseSqlServer(builder.Configuration.GetConnectionString("ConnectionDB"));
             });
 
-            builder.Services.AddControllers();
+            builder.Services.AddControllers().AddNewtonsoftJson();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();

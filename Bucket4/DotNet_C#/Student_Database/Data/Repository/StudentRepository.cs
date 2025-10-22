@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.JsonPatch;
+using Microsoft.AspNetCore.Mvc;
 using Student_Database.Models;
 using System.Xml.XPath;
+using Microsoft.EntityFrameworkCore;
 
 namespace Student_Database.Data.Repository
 {
@@ -13,56 +15,49 @@ namespace Student_Database.Data.Repository
             _dbcontext = dbcontext;
         }
 
-        public int CreateStudent(Student student)
+        public async Task<int> CreateStudent(Student student)
         {
             _dbcontext.Students.Add(student);
-            _dbcontext.SaveChanges();
+            await _dbcontext.SaveChangesAsync();
             return 1;
         }
 
-        public bool DeleteStudent(int id)
+        public async Task<bool> DeleteStudent(int id)
         {
             var deleting = _dbcontext.Students.Where(n => n.Id == id).FirstOrDefault();
             _dbcontext.Students.Remove(deleting);
-            _dbcontext.SaveChanges();
+            await _dbcontext.SaveChangesAsync();
             return true;
         }
 
-        public List<Student> GetAll()
+        public async Task<List<Student>> GetAll()
         {
-            return _dbcontext.Students.ToList();
+            return await _dbcontext.Students.ToListAsync();
         }
 
-        public Student GetStudentsByID(int id)
+        public async Task<Student> GetStudentsByID(int id)
         {
-            return _dbcontext.Students.Where(n => n.Id == id).FirstOrDefault();
+            return await _dbcontext.Students.Where(n => n.Id == id).FirstOrDefaultAsync();
         }
 
-        public Student GetStudentsByName(string Name)
+        public async Task<Student> GetStudentsByName(string Name)
         {
-            return _dbcontext.Students.Where(n => n.Name == Name).FirstOrDefault();
+            return await _dbcontext.Students.Where(n => n.Name == Name).FirstOrDefaultAsync();
         }
 
-        public int UpdateStudent(Student student, [FromBody] JsonPatchDocument<Student> patchDocument)
+        public async Task<int> UpdateStudent(Student student)
         {
-            var studentupdated = new Student()
-            {
-                Name = student.Name,
-                Age = student.Age,
-                Email = student.Email,
-                City = student.City
-            };
-            patchDocument.ApplyTo(student, ModelState);
-            if (!ModelState.IsValid)
-            {
+            if (student == null || student.Id == 0)
                 return 0;
-            }
-            student.Name = student.Name;
-            student.Age = student.Age;
-            student.Email = student.Email;
-            student.City = student.City;
+            var existing = await _dbcontext.Students.FindAsync(student.Id);
+            if (existing == null)
+                return 0;
+            existing.Name = student.Name;
+            existing.Email = student.Email;
+            existing.Age = student.Age;
+            existing.City = student.City;
 
-            _dbcontext.SaveChanges();
+            await _dbcontext.SaveChangesAsync();
             return 1;
         }
     }

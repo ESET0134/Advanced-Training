@@ -4,11 +4,11 @@ namespace Student_Database.Data.Repository
 {
     public interface IstudentRepository
     {
-        List<Student> GetAll();
-        Student GetStudentsByID(int id);
-        Student GetStudentsByName(string Name);
-        int CreateStudent(Student student);
-        int UpdateStudent(Student student);
-        bool DeleteStudent(int id);
+        Task<List<Student>> GetAll();
+        Task<Student> GetStudentsByID(int id);
+        Task<Student> GetStudentsByName(string Name);
+        Task<int> CreateStudent(Student student);
+        Task<int> UpdateStudent(Student student);
+        Task<bool> DeleteStudent(int id);
     }
 }
