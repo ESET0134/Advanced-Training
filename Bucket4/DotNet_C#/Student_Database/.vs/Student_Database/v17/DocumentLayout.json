@@ -42,8 +42,7 @@
               "RelativeToolTip": "Data\\Repository\\IstudentRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAuwAsAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-21T04:33:55.084Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-21T04:33:55.084Z"
             },
             {
               "$type": "Document",
@@ -55,8 +54,7 @@
               "RelativeToolTip": "Data\\Repository\\StudentRepository.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAAAwB0AAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-21T04:31:23.958Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-21T04:31:23.958Z"
             },
             {
               "$type": "Document",
@@ -68,8 +66,7 @@
               "RelativeToolTip": "Models\\Student.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-17T06:21:07.631Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-17T06:21:07.631Z"
             },
             {
               "$type": "Document",
@@ -79,7 +76,7 @@
               "RelativeDocumentMoniker": "Controllers\\StudentApp.cs",
               "ToolTip": "C:\\Users\\HP\\OneDrive\\Desktop\\Training\\Advanced-Training\\Bucket4\\DotNet_C#\\Student_Database\\Controllers\\StudentApp.cs",
               "RelativeToolTip": "Controllers\\StudentApp.cs",
-              "ViewState": "AgIAAD4AAAAAAAAAAAAUwE8AAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAIwEYAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-16T09:26:18.466Z",
               "EditorCaption": ""
@@ -94,8 +91,7 @@
               "RelativeToolTip": "Models\\CollegeContext.cs",
               "ViewState": "AgIAABEAAAAAAAAAAAAAwBMAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-16T09:24:07.968Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-16T09:24:07.968Z"
             }
           ]
         }

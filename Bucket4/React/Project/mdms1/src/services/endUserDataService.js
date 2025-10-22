@@ -29,46 +29,166 @@ export const endUserDataService = {
       },
       payments: [
         {
-          date: "2025-11-28",
+          date: '2025-11-28',
           billAmount: 2350,
           paidAmount: 0,
-          status: "Pending",
+          status: 'Pending',
           receiptId: null,
+          details: [
+            {
+              date: '2025-11-01',
+              reading: '45 kWh',
+              consumption: '45 kWh',
+              cost: '₹220',
+            },
+            {
+              date: '2025-11-10',
+              reading: '55 kWh',
+              consumption: '55 kWh',
+              cost: '₹270',
+            },
+            {
+              date: '2025-11-20',
+              reading: '60 kWh',
+              consumption: '60 kWh',
+              cost: '₹300',
+            },
+          ],
         },
         {
-          date: "2025-10-10",
+          date: '2025-10-10',
           billAmount: 1200,
           paidAmount: 1200,
-          status: "Paid",
-          receiptId: "RCPT1023",
+          status: 'Paid',
+          receiptId: 'RCPT1023',
+          details: [
+            {
+              date: '2025-10-01',
+              reading: '28 kWh',
+              consumption: '28 kWh',
+              cost: '₹140',
+            },
+            {
+              date: '2025-10-10',
+              reading: '30 kWh',
+              consumption: '30 kWh',
+              cost: '₹150',
+            },
+            {
+              date: '2025-10-20',
+              reading: '35 kWh',
+              consumption: '35 kWh',
+              cost: '₹170',
+            },
+          ],
         },
         {
-          date: "2025-10-20",
+          date: '2025-10-20',
           billAmount: 1000,
           paidAmount: 1000,
-          status: "Paid",
-          receiptId: "RCPT1025",
+          status: 'Paid',
+          receiptId: 'RCPT1025',
+          details: [
+            {
+              date: '2025-10-05',
+              reading: '30 kWh',
+              consumption: '30 kWh',
+              cost: '₹150',
+            },
+            {
+              date: '2025-10-15',
+              reading: '32 kWh',
+              consumption: '32 kWh',
+              cost: '₹160',
+            },
+            {
+              date: '2025-10-25',
+              reading: '35 kWh',
+              consumption: '35 kWh',
+              cost: '₹175',
+            },
+          ],
         },
         {
-          date: "2025-09-10",
+          date: '2025-09-10',
           billAmount: 1150,
           paidAmount: 1150,
-          status: "Paid",
-          receiptId: "RCPT1019",
+          status: 'Paid',
+          receiptId: 'RCPT1019',
+          details: [
+            {
+              date: '2025-09-01',
+              reading: '25 kWh',
+              consumption: '25 kWh',
+              cost: '₹120',
+            },
+            {
+              date: '2025-09-05',
+              reading: '28 kWh',
+              consumption: '28 kWh',
+              cost: '₹140',
+            },
+            {
+              date: '2025-09-10',
+              reading: '30 kWh',
+              consumption: '30 kWh',
+              cost: '₹150',
+            },
+          ],
         },
         {
-          date: "2025-09-20",
+          date: '2025-09-20',
           billAmount: 1300,
           paidAmount: 1300,
-          status: "Paid",
-          receiptId: "RCPT1021",
+          status: 'Paid',
+          receiptId: 'RCPT1021',
+          details: [
+            {
+              date: '2025-09-10',
+              reading: '32 kWh',
+              consumption: '32 kWh',
+              cost: '₹160',
+            },
+            {
+              date: '2025-09-15',
+              reading: '35 kWh',
+              consumption: '35 kWh',
+              cost: '₹175',
+            },
+            {
+              date: '2025-09-20',
+              reading: '38 kWh',
+              consumption: '38 kWh',
+              cost: '₹190',
+            },
+          ],
         },
         {
-          date: "2025-08-10",
+          date: '2025-08-10',
           billAmount: 1230,
           paidAmount: 1230,
-          status: "Paid",
-          receiptId: "RCPT1015",
+          status: 'Paid',
+          receiptId: 'RCPT1015',
+          details: [
+            {
+              date: '2025-08-01',
+              reading: '22 kWh',
+              consumption: '22 kWh',
+              cost: '₹110',
+            },
+            {
+              date: '2025-08-05',
+              reading: '25 kWh',
+              consumption: '25 kWh',
+              cost: '₹125',
+            },
+            {
+              date: '2025-08-10',
+              reading: '28 kWh',
+              consumption: '28 kWh',
+              cost: '₹140',
+            },
+          ],
         },
       ],
     };
@@ -84,10 +204,7 @@ export const endUserDataService = {
     });
     const paid = new Date(data.billing.lastPaymentDate).toLocaleDateString(
       'en-US',
-      {
-        day: 'numeric',
-        month: 'short',
-      }
+      { day: 'numeric', month: 'short' }
     );
 
     const currentBill = `₹${(averageKwh * data.billing.ratePerKwh).toFixed(0)} Due on ${due}`;
@@ -137,7 +254,9 @@ export const endUserDataService = {
   getBills() {
     const data = this.getUserData();
     const bills = data.payments.map((p) => {
-      const month = new Date(p.date).toLocaleString('en-US', { month: 'short' });
+      const month = new Date(p.date).toLocaleString('en-US', {
+        month: 'short',
+      });
       const year = new Date(p.date).getFullYear();
       const dueDateObj = new Date(p.date);
       dueDateObj.setMonth(dueDateObj.getMonth() + 1, 0);
@@ -156,16 +275,22 @@ export const endUserDataService = {
     const currentDue = new Date(data.billing.dueDate);
     const currentMonth = currentDue.toLocaleString('en-US', { month: 'short' });
     const currentYear = currentDue.getFullYear();
-    if (!bills.some((b) => b.month === currentMonth && b.year === currentYear)) {
+    if (
+      !bills.some((b) => b.month === currentMonth && b.year === currentYear)
+    ) {
       bills.push({
         month: currentMonth,
         year: currentYear,
         amount: (data.billing.totalUnits * data.billing.ratePerKwh).toFixed(2),
-        dueDate: new Date(currentDue.getFullYear(), currentDue.getMonth() + 1, 0).toLocaleDateString('en-US', {
+        dueDate: new Date(
+          currentDue.getFullYear(),
+          currentDue.getMonth() + 1,
+          0
+        ).toLocaleDateString('en-US', {
           day: '2-digit',
           month: 'short',
         }),
-        status: "Pending",
+        status: 'Pending',
       });
     }
 

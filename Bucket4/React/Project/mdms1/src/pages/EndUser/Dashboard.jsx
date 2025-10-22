@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Clock } from 'lucide-react';
+import { Clock, Banknote, ReceiptText, BarChart, Settings } from 'lucide-react';
 import Header from '../../components/layout/Header/Header';
 import EndUserSidebar from '../../components/layout/Sidebar/EndUserSidebar';
 import useAuth from '../../hooks/useAuth';
@@ -13,6 +13,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from 'recharts';
+import { Link } from 'react-router-dom';
 
 function StatCard({ title, value }) {
   return (
@@ -133,18 +134,30 @@ export default function Dashboard() {
                 Quick Actions
               </h3>
               <div className="flex gap-3 flex-wrap">
-                <button className="bg-gray-200 text-black px-4 py-2 rounded-lg border">
-                  Pay Bill
-                </button>
-                <button className="bg-gray-200 text-black px-4 py-2 rounded-lg border">
-                  View Bill History
-                </button>
-                <button className="bg-gray-200 text-black px-4 py-2 rounded-lg border">
-                  View Detailed Usage
-                </button>
-                <button className="bg-gray-200 text-black px-4 py-2 rounded-lg border">
-                  Manage Notifications
-                </button>
+                <Link to="/enduser/bills-payments">
+                  <button className="bg-gray-200 text-black flex items-center px-4 py-2 rounded-lg border">
+                    <Banknote size={16} />
+                    Pay Bill
+                  </button>
+                </Link>
+                <Link to="/enduser/bills-payments">
+                  <button className="bg-gray-200 text-black flex items-center px-4 py-2 rounded-lg border">
+                    <ReceiptText size={16} />
+                    View Bill History
+                  </button>
+                </Link>
+                <Link to="/enduser/meter-data">
+                  <button className="bg-gray-200 text-black flex items-center px-4 py-2 rounded-lg border">
+                    <BarChart size={16} />
+                    View Detailed Usage
+                  </button>
+                </Link>
+                <Link to="/enduser/alerts">
+                  <button className="bg-gray-200 text-black flex items-center px-4 py-2 rounded-lg border">
+                    <Settings size={16} />
+                    Manage Notifications
+                  </button>
+                </Link>
               </div>
             </div>
           </div>

@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 import { Bell, User, LogOut } from 'lucide-react';
 import darkModeIcon from '../../../assets/icons/darkmode.svg';
 import lightModeIcon from '../../../assets/icons/lightmode.svg';
-import logo from '../../../assets/images/logo.png';
 import useAuth from '../../../hooks/useAuth';
 
 export default function Header() {

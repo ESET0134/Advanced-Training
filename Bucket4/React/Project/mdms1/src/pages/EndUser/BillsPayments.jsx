@@ -1,13 +1,15 @@
-import React, { useState } from "react";
-import Header from "../../components/layout/Header/Header";
-import EndUserSidebar from "../../components/layout/Sidebar/EndUserSidebar";
-import { endUserDataService } from "../../services/endUserDataService";
+import React, { useState } from 'react';
+import Header from '../../components/layout/Header/Header';
+import EndUserSidebar from '../../components/layout/Sidebar/EndUserSidebar';
+import { endUserDataService } from '../../services/endUserDataService';
+import { useNavigate } from 'react-router-dom';
 
 export default function BillsPayments() {
   const data = endUserDataService.getUserData();
   const bills = endUserDataService.getBills();
   const [currentPage, setCurrentPage] = useState(1);
   const billsPerPage = 4;
+  const navigate = useNavigate();
 
   const totalPages = Math.ceil(bills.length / billsPerPage);
   const startIndex = (currentPage - 1) * billsPerPage;
@@ -28,11 +30,21 @@ export default function BillsPayments() {
               <table className="min-w-full border border-gray-300 dark:border-gray-700 text-sm text-left bg-white dark:bg-gray-800 rounded-md">
                 <thead className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200">
                   <tr>
-                    <th className="px-4 py-2 border border-gray-300 dark:border-gray-700">Month</th>
-                    <th className="px-4 py-2 border border-gray-300 dark:border-gray-700">Amount</th>
-                    <th className="px-4 py-2 border border-gray-300 dark:border-gray-700">Due Date</th>
-                    <th className="px-4 py-2 border border-gray-300 dark:border-gray-700">Status</th>
-                    <th className="px-4 py-2 border border-gray-300 dark:border-gray-700">Actions</th>
+                    <th className="px-4 py-2 border border-gray-300 dark:border-gray-700">
+                      Month
+                    </th>
+                    <th className="px-4 py-2 border border-gray-300 dark:border-gray-700">
+                      Amount
+                    </th>
+                    <th className="px-4 py-2 border border-gray-300 dark:border-gray-700">
+                      Due Date
+                    </th>
+                    <th className="px-4 py-2 border border-gray-300 dark:border-gray-700">
+                      Status
+                    </th>
+                    <th className="px-4 py-2 border border-gray-300 dark:border-gray-700">
+                      Actions
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
@@ -53,9 +65,9 @@ export default function BillsPayments() {
                       <td className="px-4 py-2">
                         <span
                           className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                            bill.status === "Pending"
-                              ? "bg-yellow-100 text-yellow-700"
-                              : "bg-green-100 text-green-700"
+                            bill.status === 'Pending'
+                              ? 'bg-yellow-100 text-yellow-700'
+                              : 'bg-green-100 text-green-700'
                           }`}
                         >
                           {bill.status}
@@ -76,8 +88,8 @@ export default function BillsPayments() {
                 disabled={currentPage === 1}
                 className={`${
                   currentPage === 1
-                    ? "text-black bg-gray-200 cursor-not-allowed"
-                    : "text-black bg-white dark:hover:text-white"
+                    ? 'text-black bg-gray-200 cursor-not-allowed'
+                    : 'text-black bg-gray-200'
                 }`}
               >
                 ← Previous
@@ -90,8 +102,8 @@ export default function BillsPayments() {
                     onClick={() => setCurrentPage(i + 1)}
                     className={`px-2 rounded ${
                       i + 1 === currentPage
-                        ? "font-bold text-black dark:text-white"
-                        : "text-gray-500 hover:text-black dark:hover:text-white"
+                        ? 'text-black bg-gray-200 cursor-not-allowed'
+                        : 'text-black bg-gray-200'
                     }`}
                   >
                     {i + 1}
@@ -106,8 +118,8 @@ export default function BillsPayments() {
                 disabled={currentPage === totalPages}
                 className={`${
                   currentPage === totalPages
-                    ? "text-gray-400 cursor-not-allowed"
-                    : "hover:text-black dark:hover:text-white"
+                    ? 'text-black bg-gray-200 cursor-not-allowed'
+                    : 'text-black bg-gray-200'
                 }`}
               >
                 Next →
@@ -115,7 +127,8 @@ export default function BillsPayments() {
             </div>
 
             <div className="mt-6 text-sm text-gray-800 dark:text-gray-300">
-              <strong>Note:</strong> All bills are generated on the 1st of each month
+              <strong>Note:</strong> All bills are generated on the 1st of each
+              month
             </div>
           </div>
         </main>
