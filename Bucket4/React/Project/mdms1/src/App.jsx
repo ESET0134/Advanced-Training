@@ -26,6 +26,7 @@ import Logs from './pages/EndUser/Logs';
 
 import ProtectedRoute from './components/layout/ProtectedRoute';
 import { authService } from './services/authService';
+import BillDetails from './pages/EndUser/BillDetails';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -99,6 +100,14 @@ function App() {
           element={
             <ProtectedRoute>
               <Logs />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/enduser/bill/:receiptId"
+          element={
+            <ProtectedRoute>
+              <BillDetails />
             </ProtectedRoute>
           }
         />
