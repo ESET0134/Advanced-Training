@@ -269,6 +269,7 @@ export const endUserDataService = {
           month: 'short',
         }),
         status: p.status,
+        receiptId: p.receiptId,
       };
     });
 
@@ -291,6 +292,7 @@ export const endUserDataService = {
           month: 'short',
         }),
         status: 'Pending',
+        receiptId: null,
       });
     }
 
