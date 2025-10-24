@@ -149,3 +149,4 @@ C:\Users\HP\OneDrive\Desktop\Training\Advanced-Training\Bucket4\DotNet_C#\Studen
 C:\Users\HP\OneDrive\Desktop\Training\Advanced-Training\Bucket4\DotNet_C#\Student_Database\bin\Debug\net8.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\Users\HP\OneDrive\Desktop\Training\Advanced-Training\Bucket4\DotNet_C#\Student_Database\bin\Debug\net8.0\Newtonsoft.Json.dll
 C:\Users\HP\OneDrive\Desktop\Training\Advanced-Training\Bucket4\DotNet_C#\Student_Database\bin\Debug\net8.0\Newtonsoft.Json.Bson.dll
+C:\Users\HP\OneDrive\Desktop\Training\Advanced-Training\Bucket4\DotNet_C#\Student_Database\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

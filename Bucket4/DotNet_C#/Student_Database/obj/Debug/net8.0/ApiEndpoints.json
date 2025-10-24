@@ -1,5 +1,21 @@
 [
   {
+    "ContainingType": "Student_Database.Controllers.AuthController",
+    "Method": "Login",
+    "RelativePath": "api/Auth/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "user",
+        "Type": "Student_Database.Controllers.LoginModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Student_Database.Controllers.StudentApp",
     "Method": "getstudentsbyid",
     "RelativePath": "StudentApp/{id}",
