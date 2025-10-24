@@ -22,14 +22,18 @@ export default function BillsPayments() {
       const billYear = bill.year;
       const billDate = new Date(b.date || `${billMonth} 1, ${billYear}`);
 
-      const matchMonth = new Date(b.date || b.dateCreated || b.date).toLocaleString('en-US', {
-        month: 'short',
-      }).toLowerCase();
+      const matchMonth = new Date(b.date || b.dateCreated || b.date)
+        .toLocaleString('en-US', {
+          month: 'short',
+        })
+        .toLowerCase();
 
       return (
         (b.receiptId && b.receiptId === bill.receiptId) ||
         (new Date(b.date).getFullYear() === billYear &&
-          new Date(b.date).toLocaleString('en-US', { month: 'short' }).toLowerCase() === billMonth)
+          new Date(b.date)
+            .toLocaleString('en-US', { month: 'short' })
+            .toLowerCase() === billMonth)
       );
     });
     return match || null;

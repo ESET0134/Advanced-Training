@@ -191,6 +191,66 @@ export const endUserDataService = {
           ],
         },
       ],
+      meterData: {
+        day: {
+          previous: [
+            { time: '00:00', value: 50 },
+            { time: '03:00', value: 40 },
+            { time: '06:00', value: 30 },
+            { time: '09:00', value: 50 },
+            { time: '12:00', value: 60 },
+            { time: '15:00', value: 45 },
+            { time: '18:00', value: 20 },
+            { time: '21:00', value: 80 },
+            { time: '23:00', value: 60 },
+          ],
+          current: [
+            { time: '00:00', value: 20 },
+            { time: '03:00', value: 45 },
+            { time: '06:00', value: 35 },
+            { time: '09:00', value: 20 },
+            { time: '12:00', value: 20 },
+            { time: '15:00', value: 55 },
+            { time: '18:00', value: 96 },
+            { time: '21:00', value: 20 },
+            { time: '23:00', value: 50 },
+          ],
+        },
+        week: {
+          previous: [
+            { day: 'Mon', value: 200 },
+            { day: 'Tue', value: 240 },
+            { day: 'Wed', value: 180 },
+            { day: 'Thu', value: 260 },
+            { day: 'Fri', value: 300 },
+            { day: 'Sat', value: 320 },
+            { day: 'Sun', value: 280 },
+          ],
+          current: [
+            { day: 'Mon', value: 220 },
+            { day: 'Tue', value: 240 },
+            { day: 'Wed', value: 295 },
+            { day: 'Thu', value: 290 },
+            { day: 'Fri', value: 240 },
+            { day: 'Sat', value: 280 },
+            { day: 'Sun', value: 320 },
+          ],
+        },
+        month: {
+          previous: [
+            { week: 'Week 1', value: 2000 },
+            { week: 'Week 2', value: 1900 },
+            { week: 'Week 3', value: 1550 },
+            { week: 'Week 4', value: 1895 },
+          ],
+          current: [
+            { week: 'Week 1', value: 1900 },
+            { week: 'Week 2', value: 2100 },
+            { week: 'Week 3', value: 1770 },
+            { week: 'Week 4', value: 1650 },
+          ],
+        },
+      },
     };
   },
 

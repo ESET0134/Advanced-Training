@@ -54,9 +54,9 @@ export default function BillDetails() {
           { month: 'long', year: 'numeric' }
         )}</p>
         <p><strong>Total Amount:</strong> ₹${bill.billAmount}</p>
-        <p><strong>Due Date:</strong> ${new Date(
-          bill.date
-        ).toLocaleDateString('en-GB')}</p>
+        <p><strong>Due Date:</strong> ${new Date(bill.date).toLocaleDateString(
+          'en-GB'
+        )}</p>
         <p><strong>Status:</strong> ${bill.status}</p>
         <br/>
         <table border="1" cellpadding="6" cellspacing="0" width="100%">
