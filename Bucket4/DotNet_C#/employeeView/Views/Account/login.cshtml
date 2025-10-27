@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "login";
+}
+
+<h2>Login</h2>
+
+<div>
+    <label>Username:</label>
+    <input type="text" id="username" />
+</div>
+<div>
+    <label>Password:</label>
+    <input type="password" id="password" />
+</div>
+<button id="btnLogin">Login</button>
+
+<p id="msg"></p>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $("#btnLogin").click(function () {
+        var user = {
+            username: $("#username").val(),
+            password: $("#password").val()
+        };
+
+        $.ajax({
+            url: "http://localhost:5153/api/Account/login", // ✅ Your API URL
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify(user),
+            success: function (response) {
+                localStorage.setItem("jwtToken", response.token);
+                $("#msg").text("Login successful!");
+                // redirect to Students page
+                window.location.href = "/Student/Index";
+            },
+            error: function (xhr) {
+                $("#msg").text("Invalid credentials");
+            }
+        });
+    });
+</script>

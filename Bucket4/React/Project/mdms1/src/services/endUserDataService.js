@@ -251,6 +251,39 @@ export const endUserDataService = {
           ],
         },
       },
+      notifications: [
+        {
+          id: 1,
+          title: 'Meter Reading Update',
+          description: 'Your latest meter reading has been recorded.',
+          date: '24 October 2025',
+          time: '06:15 PM',
+          content:
+            'Lorem Ipsum is simply dummy text of the printing and typesetting industry. ' +
+            "It has been the industry's standard dummy text ever since the 1500s, " +
+            'surviving not only five centuries but also the leap into electronic typesetting.',
+        },
+        {
+          id: 2,
+          title: 'Bill Payment Reminder',
+          description: 'Your electricity bill is due tomorrow.',
+          date: '24 October 2025',
+          time: '09:00 AM',
+          content:
+            'Please make sure to complete your payment before the due date to avoid any late fees. ' +
+            'You can pay directly through the Bills & Payments section.',
+        },
+        {
+          id: 3,
+          title: 'Low Consumption Alert',
+          description: 'Your energy usage is lower than last month.',
+          date: '03 May 2025',
+          time: '02:30 PM',
+          content:
+            'Good news! Your electricity consumption this week has decreased by 10% compared to last month. ' +
+            'Keep up the energy-saving habits to reduce your carbon footprint.',
+        },
+      ],
     };
   },
 
