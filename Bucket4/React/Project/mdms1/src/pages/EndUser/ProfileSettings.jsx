@@ -26,13 +26,13 @@ export default function ProfileSettings() {
 
   useEffect(() => {
     const localData = JSON.parse(localStorage.getItem('endUserData'));
-    const sessionData = JSON.parse(sessionStorage.getItem('mdms_current_user'));
+    //const sessionData = JSON.parse(sessionStorage.getItem('mdms_current_user'));
 
     if (localData) {
       setProfile((prev) => ({
         ...prev,
         name: localData.name || '',
-        email: sessionData?.email || '',
+        email: localData.email || '',
         mobile: localData.mobile || '',
         profilePicture: localData.profilePicture || '',
       }));
@@ -42,20 +42,46 @@ export default function ProfileSettings() {
   }, []);
 
   const handleProfileSave = () => {
-    const localData = JSON.parse(localStorage.getItem('endUserData')) || {};
-    const updated = {
-      ...localData,
-      name: profile.name,
-      profilePicture: profile.profilePicture,
-      mobile: profile.mobile,
-      notifications,
-    };
-    localStorage.setItem('endUserData', JSON.stringify(updated));
-
-    const sessionData =
+    // Load all relevant storages
+    const authUser = JSON.parse(localStorage.getItem('mdms_auth_user')) || {};
+    const endUserData = JSON.parse(localStorage.getItem('endUserData')) || {};
+    const sessionUser =
       JSON.parse(sessionStorage.getItem('mdms_current_user')) || {};
-    sessionData.name = profile.name;
-    sessionStorage.setItem('mdms_current_user', JSON.stringify(sessionData));
+
+    // ✅ Build updated objects safely
+    const updatedAuthUser = {
+      ...authUser, // keep all non-editable fields like email, password, role, zone
+      name: profile.name || authUser.name,
+      mobile: profile.mobile || authUser.mobile,
+      email: profile.email || authUser.email,
+      profilePicture: profile.profilePicture || authUser.profilePicture,
+      notifications: notifications || authUser.notifications,
+    };
+
+    const updatedEndUser = {
+      ...endUserData, // keep billing, consumption, payments, etc.
+      name: profile.name || endUserData.name,
+      mobile: profile.mobile || endUserData.mobile,
+      email: profile.email || endUserData.email,
+      profilePicture: profile.profilePicture || endUserData.profilePicture,
+      notifications: notifications || endUserData.notifications,
+    };
+
+    // ✅ Always ensure email & password persist
+    if (!updatedAuthUser.email) updatedAuthUser.email = authUser.email;
+    if (!updatedAuthUser.password) updatedAuthUser.password = authUser.password;
+    if (!updatedAuthUser.role) updatedAuthUser.role = authUser.role;
+    if (!updatedAuthUser.zone) updatedAuthUser.zone = authUser.zone;
+    if (!updatedEndUser.email) updatedEndUser.email = endUserData.email;
+    if (!updatedEndUser.zone) updatedEndUser.zone = endUserData.zone;
+
+    // ✅ Save back safely
+    localStorage.setItem('mdms_auth_user', JSON.stringify(updatedAuthUser));
+    localStorage.setItem('endUserData', JSON.stringify(updatedEndUser));
+    sessionStorage.setItem(
+      'mdms_current_user',
+      JSON.stringify(updatedAuthUser)
+    );
 
     setMessage('Profile updated successfully!');
     setTimeout(() => setMessage(''), 2500);
@@ -63,9 +89,15 @@ export default function ProfileSettings() {
 
   const handleSecuritySave = () => {
     const sessionData = JSON.parse(sessionStorage.getItem('mdms_current_user'));
-    if (!sessionData) return setMessage('User session not found!');
+    const localAuth = JSON.parse(localStorage.getItem('mdms_auth_user'));
 
-    if (security.currentPassword !== sessionData.password) {
+    if (!sessionData && !localAuth)
+      return setMessage('User session not found!');
+
+    // Determine which data to use for validation
+    const currentPassword = sessionData?.password || localAuth?.password || '';
+
+    if (security.currentPassword !== currentPassword) {
       setMessage('Incorrect current password!');
       return;
     }
@@ -75,8 +107,17 @@ export default function ProfileSettings() {
       return;
     }
 
-    sessionData.password = security.newPassword;
-    sessionStorage.setItem('mdms_current_user', JSON.stringify(sessionData));
+    // ✅ Update password in both storages
+    if (sessionData) {
+      sessionData.password = security.newPassword;
+      sessionStorage.setItem('mdms_current_user', JSON.stringify(sessionData));
+    }
+
+    if (localAuth) {
+      localAuth.password = security.newPassword;
+      localStorage.setItem('mdms_auth_user', JSON.stringify(localAuth));
+    }
+
     setMessage('Password updated successfully!');
     setSecurity({ currentPassword: '', newPassword: '', confirmPassword: '' });
     setTimeout(() => setMessage(''), 2500);
@@ -175,17 +216,19 @@ export default function ProfileSettings() {
                     />
                   </div>
                   <div>
-                    <label className="text-xs text-gray-600 ml-1">email</label>
+                    <label className="text-xs text-gray-600 ml-1">Email</label>
                     <input
                       type="email"
                       value={profile.email}
-                      readOnly
+                      onChange={(e) =>
+                        setProfile({ ...profile, email: e.target.value })
+                      }
                       className="w-full dark:bg-gray-300 dark:text-black border border-gray-200 rounded px-3 py-2 bg-gray-100"
                     />
                   </div>
                   <div>
                     <label className="text-xs text-gray-600 ml-1">
-                      mobile no.
+                      Mobile No.
                     </label>
                     <input
                       type="text"
