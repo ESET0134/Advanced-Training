@@ -33,7 +33,6 @@ export default function Header() {
     i18n.changeLanguage(e.target.value);
   };
 
-  // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -58,6 +57,7 @@ export default function Header() {
       <div className="flex items-center gap-4 relative">
         {!isAuthPage && (
           <button
+          onClick={() => navigate('/enduser/alerts')}
             className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition"
             aria-label="Notifications"
           >

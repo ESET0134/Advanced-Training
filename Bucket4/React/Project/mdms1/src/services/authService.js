@@ -11,7 +11,6 @@ const DEFAULT_USER = {
 };
 
 export const authService = {
-  // Initialize default user if not present
   init() {
     const stored = localStorage.getItem(STORAGE_KEY);
     if (!stored) {
@@ -19,27 +18,44 @@ export const authService = {
     }
   },
 
-  /**
-   * Login with optional rememberMe.
-   * If rememberMe is true → store in localStorage (persistent)
-   * Else → store in sessionStorage (clears on tab/browser close)
-   */
   login({ email, password, rememberMe }) {
-    this.init();
-    const user = JSON.parse(localStorage.getItem(STORAGE_KEY)) || DEFAULT_USER;
+  this.init();
+  const user = JSON.parse(localStorage.getItem(STORAGE_KEY)) || DEFAULT_USER;
 
-    if (email === user.email && password === user.password) {
-      const storage = rememberMe ? localStorage : sessionStorage;
-      storage.setItem(TOKEN_KEY, 'mock-token-12345');
-      storage.setItem(CURRENT_USER_KEY, JSON.stringify(user));
-      return { success: true, user };
-    }
+  if (email === user.email && password === user.password) {
+    const storage = rememberMe ? localStorage : sessionStorage;
+    storage.setItem(TOKEN_KEY, 'mock-token-12345');
+    storage.setItem(CURRENT_USER_KEY, JSON.stringify(user));
 
-    return { success: false, message: 'Invalid credentials' };
-  },
+    const logs = JSON.parse(localStorage.getItem('userLogs')) || [];
+    const newLog = {
+      timestamp: new Date().toLocaleString(),
+      user: user.name || 'Unknown User',
+      email: user.email || '-',
+      zone: user.zone || '-',
+      status: 'Login Successful',
+    };
+    logs.unshift(newLog);
+    localStorage.setItem('userLogs', JSON.stringify(logs));
+
+    return { success: true, user };
+  }
+
+  const logs = JSON.parse(localStorage.getItem('userLogs')) || [];
+  logs.unshift({
+    timestamp: new Date().toLocaleString(),
+    user: 'Unknown',
+    email,
+    zone: '-',
+    status: 'Login Failed',
+  });
+  localStorage.setItem('userLogs', JSON.stringify(logs));
+
+  return { success: false, message: 'Invalid credentials' };
+},
+
 
   logout() {
-    // Clear from both storages to ensure complete logout
     localStorage.removeItem(TOKEN_KEY);
     localStorage.removeItem(CURRENT_USER_KEY);
     sessionStorage.removeItem(TOKEN_KEY);
