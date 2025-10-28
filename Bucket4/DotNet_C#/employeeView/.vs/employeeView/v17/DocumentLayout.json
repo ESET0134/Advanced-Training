@@ -3,12 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\HP\\OneDrive\\Desktop\\Training\\Advanced-Training\\Bucket4\\DotNet_C#\\employeeView\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{12772F9D-88E6-4892-92A8-0BC270891CC2}|employeeView.csproj|c:\\users\\hp\\onedrive\\desktop\\training\\advanced-training\\bucket4\\dotnet_c#\\employeeview\\views\\employees\\employee.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{12772F9D-88E6-4892-92A8-0BC270891CC2}|employeeView.csproj|solutionrelative:views\\employees\\employee.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{12772F9D-88E6-4892-92A8-0BC270891CC2}|employeeView.csproj|c:\\users\\hp\\onedrive\\desktop\\training\\advanced-training\\bucket4\\dotnet_c#\\employeeview\\controllers\\employees.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{12772F9D-88E6-4892-92A8-0BC270891CC2}|employeeView.csproj|solutionrelative:controllers\\employees.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{12772F9D-88E6-4892-92A8-0BC270891CC2}|employeeView.csproj|c:\\users\\hp\\onedrive\\desktop\\training\\advanced-training\\bucket4\\dotnet_c#\\employeeview\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{12772F9D-88E6-4892-92A8-0BC270891CC2}|employeeView.csproj|solutionrelative:views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{12772F9D-88E6-4892-92A8-0BC270891CC2}|employeeView.csproj|c:\\users\\hp\\onedrive\\desktop\\training\\advanced-training\\bucket4\\dotnet_c#\\employeeview\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{12772F9D-88E6-4892-92A8-0BC270891CC2}|employeeView.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{12772F9D-88E6-4892-92A8-0BC270891CC2}|employeeView.csproj|c:\\users\\hp\\onedrive\\desktop\\training\\advanced-training\\bucket4\\dotnet_c#\\employeeview\\controllers\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{12772F9D-88E6-4892-92A8-0BC270891CC2}|employeeView.csproj|solutionrelative:controllers\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{12772F9D-88E6-4892-92A8-0BC270891CC2}|employeeView.csproj|c:\\users\\hp\\onedrive\\desktop\\training\\advanced-training\\bucket4\\dotnet_c#\\employeeview\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{12772F9D-88E6-4892-92A8-0BC270891CC2}|employeeView.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,25 +39,77 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Employee.cshtml",
+              "DocumentMoniker": "C:\\Users\\HP\\OneDrive\\Desktop\\Training\\Advanced-Training\\Bucket4\\DotNet_C#\\employeeView\\Views\\Employees\\Employee.cshtml",
+              "RelativeDocumentMoniker": "Views\\Employees\\Employee.cshtml",
+              "ToolTip": "C:\\Users\\HP\\OneDrive\\Desktop\\Training\\Advanced-Training\\Bucket4\\DotNet_C#\\employeeView\\Views\\Employees\\Employee.cshtml",
+              "RelativeToolTip": "Views\\Employees\\Employee.cshtml",
+              "ViewState": "AgIAAKoAAAAAAAAAAAAkwLkAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-28T05:14:25.973Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Employees.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\OneDrive\\Desktop\\Training\\Advanced-Training\\Bucket4\\DotNet_C#\\employeeView\\Controllers\\Employees.cs",
+              "RelativeDocumentMoniker": "Controllers\\Employees.cs",
+              "ToolTip": "C:\\Users\\HP\\OneDrive\\Desktop\\Training\\Advanced-Training\\Bucket4\\DotNet_C#\\employeeView\\Controllers\\Employees.cs",
+              "RelativeToolTip": "Controllers\\Employees.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-28T05:13:58.488Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\OneDrive\\Desktop\\Training\\Advanced-Training\\Bucket4\\DotNet_C#\\employeeView\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\HP\\OneDrive\\Desktop\\Training\\Advanced-Training\\Bucket4\\DotNet_C#\\employeeView\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-28T05:13:14.331Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\OneDrive\\Desktop\\Training\\Advanced-Training\\Bucket4\\DotNet_C#\\employeeView\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\HP\\OneDrive\\Desktop\\Training\\Advanced-Training\\Bucket4\\DotNet_C#\\employeeView\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAzwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-28T04:51:33.562Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "login.cshtml",
               "DocumentMoniker": "C:\\Users\\HP\\OneDrive\\Desktop\\Training\\Advanced-Training\\Bucket4\\DotNet_C#\\employeeView\\Views\\Account\\login.cshtml",
               "RelativeDocumentMoniker": "Views\\Account\\login.cshtml",
               "ToolTip": "C:\\Users\\HP\\OneDrive\\Desktop\\Training\\Advanced-Training\\Bucket4\\DotNet_C#\\employeeView\\Views\\Account\\login.cshtml",
               "RelativeToolTip": "Views\\Account\\login.cshtml",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAkwBoAAAAQAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADwAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-10-27T10:15:01.104Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "Account.cs",
               "DocumentMoniker": "C:\\Users\\HP\\OneDrive\\Desktop\\Training\\Advanced-Training\\Bucket4\\DotNet_C#\\employeeView\\Controllers\\Account.cs",
               "RelativeDocumentMoniker": "Controllers\\Account.cs",
               "ToolTip": "C:\\Users\\HP\\OneDrive\\Desktop\\Training\\Advanced-Training\\Bucket4\\DotNet_C#\\employeeView\\Controllers\\Account.cs",
               "RelativeToolTip": "Controllers\\Account.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAgAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-27T10:14:06.344Z",
               "EditorCaption": ""

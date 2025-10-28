@@ -6,7 +6,7 @@
     "version": "v1"
   },
   "paths": {
-    "/api/Account/login": {
+    "/api/Account": {
       "post": {
         "tags": [
           "Account"

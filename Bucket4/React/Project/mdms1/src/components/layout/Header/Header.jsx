@@ -5,6 +5,7 @@ import { Bell, User, LogOut } from 'lucide-react';
 import darkModeIcon from '../../../assets/icons/darkmode.svg';
 import lightModeIcon from '../../../assets/icons/lightmode.svg';
 import useAuth from '../../../hooks/useAuth';
+import { authService } from '../../../services/authService';
 
 export default function Header() {
   const { t, i18n } = useTranslation();
@@ -14,6 +15,7 @@ export default function Header() {
   const location = useLocation();
   const navigate = useNavigate();
   const { user, logout } = useAuth();
+  const currentUser = authService.getCurrentUser();
 
   const isAuthPage =
     location.pathname === '/login' ||
@@ -26,6 +28,26 @@ export default function Header() {
       document.documentElement.classList.remove('dark');
     } else {
       document.documentElement.classList.add('dark');
+    }
+  };
+
+  const handleNotificationClick = () => {
+    if (!currentUser) return navigate('/');
+
+    if (currentUser.role === 'zone') {
+      navigate('/zone/notifications');
+    } else {
+      navigate('/enduser/alerts');
+    }
+  };
+
+  const handleProfileClick = () => {
+    if (!currentUser) return navigate('/');
+
+    if (currentUser.role === 'zone') {
+      navigate('/zone/settings');
+    } else {
+      navigate('/enduser/profile');
     }
   };
 
@@ -57,7 +79,7 @@ export default function Header() {
       <div className="flex items-center gap-4 relative">
         {!isAuthPage && (
           <button
-          onClick={() => navigate('/enduser/alerts')}
+            onClick={handleNotificationClick}
             className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition"
             aria-label="Notifications"
           >
@@ -115,10 +137,7 @@ export default function Header() {
                 </div>
 
                 <button
-                  onClick={() => {
-                    navigate('/enduser/profile');
-                    setDropdownOpen(false);
-                  }}
+                  onClick={handleProfileClick}
                   className="w-full flex items-center gap-2 px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition"
                 >
                   <User size={16} /> Profile

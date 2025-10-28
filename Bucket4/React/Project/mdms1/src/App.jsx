@@ -23,6 +23,12 @@ import AlertsNotifications from './pages/EndUser/AlertsNotifications';
 import ProfileSettings from './pages/EndUser/ProfileSettings';
 import Logs from './pages/EndUser/Logs';
 
+import ZoneDashboard from './pages/Zone/Dashboard';
+import MeterManagement from './pages/Zone/MeterManagement';
+import UserManagement from './pages/Zone/UserManagement';
+import ReportsAnalytics from './pages/Zone/ReportsAnalytics';
+import ZoneSettings from './pages/Zone/SettingsNotifications';
+
 import ProtectedRoute from './components/layout/ProtectedRoute';
 import { authService } from './services/authService';
 import BillDetails from './pages/EndUser/BillDetails';
@@ -108,6 +114,46 @@ function App() {
             </ProtectedRoute>
           }
         />
+        <Route
+          path="/zone/dashboard"
+          element={
+            <ProtectedRoute>
+              <ZoneDashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/zone/meter-management"
+          element={
+            <ProtectedRoute>
+              <MeterManagement />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/zone/user-management"
+          element={
+            <ProtectedRoute>
+              <UserManagement />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/zone/reports"
+          element={
+            <ProtectedRoute>
+              <ReportsAnalytics />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+  path="/zone/settings"
+  element={
+    <ProtectedRoute>
+      <ZoneSettings />
+    </ProtectedRoute>
+  }
+/>
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>

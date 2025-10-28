@@ -21,7 +21,7 @@ namespace EmployeeManagementAPI.Controllers
             _config = config;
         }
 
-        [HttpPost("login")]
+        [HttpPost]
         public IActionResult Login([FromBody] LoginRequest request)
         {
             var user = _userService.Authenticate(request.UserName, request.Password);

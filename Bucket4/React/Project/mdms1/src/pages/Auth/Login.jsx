@@ -26,7 +26,11 @@ export default function Login() {
     e.preventDefault();
     const res = login({ email, password, rememberMe });
     if (res.success) {
-      navigate('/enduser/dashboard', { replace: true });
+      if (res.user.role === 'enduser') {
+        navigate('/enduser/dashboard', { replace: true });
+      } else if (res.user.role === 'zone') {
+        navigate('/zone/dashboard', { replace: true });
+      }
     } else {
       alert('Invalid credentials');
     }

@@ -2,7 +2,7 @@
   {
     "ContainingType": "EmployeeManagementAPI.Controllers.AccountController",
     "Method": "Login",
-    "RelativePath": "api/Account/login",
+    "RelativePath": "api/Account",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,

@@ -1,23 +1,23 @@
-import React, { useEffect, useState } from "react";
-import Header from "../../components/layout/Header/Header";
-import EndUserSidebar from "../../components/layout/Sidebar/EndUserSidebar";
+import React, { useEffect, useState } from 'react';
+import Header from '../../components/layout/Header/Header';
+import EndUserSidebar from '../../components/layout/Sidebar/EndUserSidebar';
 
 const Logs = () => {
   const [logs, setLogs] = useState([]);
-  const [filter, setFilter] = useState("all");
+  const [filter, setFilter] = useState('all');
 
   useEffect(() => {
-    const storedLogs = JSON.parse(localStorage.getItem("userLogs")) || [];
+    const storedLogs = JSON.parse(localStorage.getItem('userLogs')) || [];
     setLogs(storedLogs);
   }, []);
 
   const clearLogs = () => {
-    localStorage.removeItem("userLogs");
+    localStorage.removeItem('userLogs');
     setLogs([]);
   };
 
   const filteredLogs = logs.filter((log) => {
-    if (filter === "all") return true;
+    if (filter === 'all') return true;
     return log.status === filter;
   });
 
@@ -78,9 +78,9 @@ const Logs = () => {
                       <tr
                         key={index}
                         className={`border-b dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition ${
-                          log.status === "Login Successful"
-                            ? "text-green-600"
-                            : "text-red-600"
+                          log.status === 'Login Successful'
+                            ? 'text-green-600'
+                            : 'text-red-600'
                         }`}
                       >
                         <td className="py-2 px-4 text-sm">{log.timestamp}</td>
@@ -110,8 +110,10 @@ const Logs = () => {
               </p>
               {logs.length > 0 && (
                 <p>
-                  Last Login:{" "}
-                  <strong>{new Date(logs[0].timestamp).toLocaleString()}</strong>
+                  Last Login:{' '}
+                  <strong>
+                    {new Date(logs[0].timestamp).toLocaleString()}
+                  </strong>
                 </p>
               )}
             </div>

@@ -32,3 +32,5 @@ C:\Users\HP\OneDrive\Desktop\Training\Advanced-Training\Bucket4\DotNet_C#\employ
 C:\Users\HP\OneDrive\Desktop\Training\Advanced-Training\Bucket4\DotNet_C#\employeeView\obj\Debug\net8.0\employeeView.pdb
 C:\Users\HP\OneDrive\Desktop\Training\Advanced-Training\Bucket4\DotNet_C#\employeeView\obj\Debug\net8.0\employeeView.genruntimeconfig.cache
 C:\Users\HP\OneDrive\Desktop\Training\Advanced-Training\Bucket4\DotNet_C#\employeeView\obj\Debug\net8.0\ref\employeeView.dll
+C:\Users\HP\OneDrive\Desktop\Training\Advanced-Training\Bucket4\DotNet_C#\employeeView\bin\Debug\net8.0\package-lock.json
+C:\Users\HP\OneDrive\Desktop\Training\Advanced-Training\Bucket4\DotNet_C#\employeeView\bin\Debug\net8.0\package.json
