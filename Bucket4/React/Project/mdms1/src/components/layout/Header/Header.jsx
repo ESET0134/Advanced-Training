@@ -95,7 +95,6 @@ export default function Header() {
 
         {!isAuthPage && (
           <div className="relative" ref={dropdownRef}>
-            {/* Profile button */}
             <button
               onClick={() => setDropdownOpen(!dropdownOpen)}
               className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition relative"
@@ -104,7 +103,6 @@ export default function Header() {
               <User size={18} />
             </button>
 
-            {/* Dropdown */}
             {dropdownOpen && (
               <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg shadow-lg z-50">
                 <div className="p-3 border-b border-gray-200 dark:border-gray-700">

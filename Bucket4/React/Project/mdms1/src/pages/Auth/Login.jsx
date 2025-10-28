@@ -13,7 +13,6 @@ export default function Login() {
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
 
-  // Redirect if already authenticated (localStorage or sessionStorage)
   useEffect(() => {
     const isLoggedIn =
       localStorage.getItem('mdms_token') ||

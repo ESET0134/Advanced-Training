@@ -75,7 +75,6 @@ export default function Dashboard() {
               </div>
             </div>
 
-            {/* ✅ Dynamic Stat Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
               <StatCard
                 title="Current Consumption"
@@ -86,7 +85,6 @@ export default function Dashboard() {
               <StatCard title="Last Payment" value={stats.lastPayment} />
             </div>
 
-            {/* ⚡ Chart */}
             <h2 className="text-lg font-semibold text-gray-800 dark:text-white mb-3">
               Electricity Consumption Overview
             </h2>
@@ -128,7 +126,6 @@ export default function Dashboard() {
               </div>
             </div>
 
-            {/* Quick Actions */}
             <div className="mb-6">
               <h3 className="text-md font-semibold text-gray-800 dark:text-white mb-2">
                 Quick Actions

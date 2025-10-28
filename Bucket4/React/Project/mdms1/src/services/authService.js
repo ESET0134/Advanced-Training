@@ -84,10 +84,8 @@ export const authService = {
       password: password ?? user.password,
     };
 
-    // Always keep master user info in localStorage
     localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
 
-    // If logged in, update current user in both storages
     if (localStorage.getItem(CURRENT_USER_KEY)) {
       localStorage.setItem(CURRENT_USER_KEY, JSON.stringify(updated));
     }
@@ -99,5 +97,4 @@ export const authService = {
   },
 };
 
-// Initialize default user on module load
 authService.init();

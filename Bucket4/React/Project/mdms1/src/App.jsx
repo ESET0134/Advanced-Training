@@ -1,4 +1,3 @@
-// src/App.jsx
 import {
   BrowserRouter as Router,
   Routes,
@@ -33,7 +32,6 @@ function App() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // small loader for splash effect
     setTimeout(() => {
       setLoading(false);
     }, 400);
@@ -54,7 +52,6 @@ function App() {
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/reset-password" element={<ResetPassword />} />
 
-        {/* EndUser protected routes */}
         <Route
           path="/enduser/dashboard"
           element={

@@ -26,7 +26,6 @@ export default function ProfileSettings() {
 
   useEffect(() => {
     const localData = JSON.parse(localStorage.getItem('endUserData'));
-    //const sessionData = JSON.parse(sessionStorage.getItem('mdms_current_user'));
 
     if (localData) {
       setProfile((prev) => ({
@@ -42,15 +41,13 @@ export default function ProfileSettings() {
   }, []);
 
   const handleProfileSave = () => {
-    // Load all relevant storages
     const authUser = JSON.parse(localStorage.getItem('mdms_auth_user')) || {};
     const endUserData = JSON.parse(localStorage.getItem('endUserData')) || {};
     const sessionUser =
       JSON.parse(sessionStorage.getItem('mdms_current_user')) || {};
 
-    // ✅ Build updated objects safely
     const updatedAuthUser = {
-      ...authUser, // keep all non-editable fields like email, password, role, zone
+      ...authUser,
       name: profile.name || authUser.name,
       mobile: profile.mobile || authUser.mobile,
       email: profile.email || authUser.email,
@@ -59,7 +56,7 @@ export default function ProfileSettings() {
     };
 
     const updatedEndUser = {
-      ...endUserData, // keep billing, consumption, payments, etc.
+      ...endUserData,
       name: profile.name || endUserData.name,
       mobile: profile.mobile || endUserData.mobile,
       email: profile.email || endUserData.email,
@@ -67,7 +64,6 @@ export default function ProfileSettings() {
       notifications: notifications || endUserData.notifications,
     };
 
-    // ✅ Always ensure email & password persist
     if (!updatedAuthUser.email) updatedAuthUser.email = authUser.email;
     if (!updatedAuthUser.password) updatedAuthUser.password = authUser.password;
     if (!updatedAuthUser.role) updatedAuthUser.role = authUser.role;
@@ -75,7 +71,6 @@ export default function ProfileSettings() {
     if (!updatedEndUser.email) updatedEndUser.email = endUserData.email;
     if (!updatedEndUser.zone) updatedEndUser.zone = endUserData.zone;
 
-    // ✅ Save back safely
     localStorage.setItem('mdms_auth_user', JSON.stringify(updatedAuthUser));
     localStorage.setItem('endUserData', JSON.stringify(updatedEndUser));
     sessionStorage.setItem(
@@ -94,7 +89,6 @@ export default function ProfileSettings() {
     if (!sessionData && !localAuth)
       return setMessage('User session not found!');
 
-    // Determine which data to use for validation
     const currentPassword = sessionData?.password || localAuth?.password || '';
 
     if (security.currentPassword !== currentPassword) {
@@ -107,7 +101,6 @@ export default function ProfileSettings() {
       return;
     }
 
-    // ✅ Update password in both storages
     if (sessionData) {
       sessionData.password = security.newPassword;
       sessionStorage.setItem('mdms_current_user', JSON.stringify(sessionData));
