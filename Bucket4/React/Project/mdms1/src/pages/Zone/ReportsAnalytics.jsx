@@ -173,9 +173,7 @@ export default function ReportsAnalytics() {
                   >
                     Export as CSV
                   </button>
-                  <button
-                    className="px-3 py-1 bg-white border border-black rounded text-sm hover:bg-gray-100"
-                  >
+                  <button className="px-3 py-1 bg-white border border-black rounded text-sm hover:bg-gray-100">
                     Export as PDF
                   </button>
                 </div>
@@ -197,10 +195,18 @@ export default function ReportsAnalytics() {
                       key={i}
                       className="hover:bg-gray-50 dark:hover:bg-gray-700"
                     >
-                      <td className="px-4 py-2 dark:text-white border">{r.meterId}</td>
-                      <td className="px-4 py-2 dark:text-white border">{r.date}</td>
-                      <td className="px-4 py-2 dark:text-white border">{r.user}</td>
-                      <td className="px-4 py-2 dark:text-white border">{r.consumption}</td>
+                      <td className="px-4 py-2 dark:text-white border">
+                        {r.meterId}
+                      </td>
+                      <td className="px-4 py-2 dark:text-white border">
+                        {r.date}
+                      </td>
+                      <td className="px-4 py-2 dark:text-white border">
+                        {r.user}
+                      </td>
+                      <td className="px-4 py-2 dark:text-white border">
+                        {r.consumption}
+                      </td>
                       <td
                         className={`px-4 py-2 border ${
                           r.status === 'Active'

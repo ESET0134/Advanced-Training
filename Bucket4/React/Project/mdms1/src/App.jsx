@@ -29,6 +29,10 @@ import UserManagement from './pages/Zone/UserManagement';
 import ReportsAnalytics from './pages/Zone/ReportsAnalytics';
 import ZoneSettings from './pages/Zone/SettingsNotifications';
 
+import EnterpriseDashboard from './pages/Enterprise/Dashboard';
+import ZoneManagement from './pages/Enterprise/ZoneManagement';
+import EMeterManagement from './pages/Enterprise/MeterManagement';
+
 import ProtectedRoute from './components/layout/ProtectedRoute';
 import { authService } from './services/authService';
 import BillDetails from './pages/EndUser/BillDetails';
@@ -147,13 +151,37 @@ function App() {
           }
         />
         <Route
-  path="/zone/settings"
-  element={
-    <ProtectedRoute>
-      <ZoneSettings />
-    </ProtectedRoute>
-  }
-/>
+          path="/zone/settings"
+          element={
+            <ProtectedRoute>
+              <ZoneSettings />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/enterprise/dashboard"
+          element={
+            <ProtectedRoute>
+              <EnterpriseDashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/enterprise/zone-management"
+          element={
+            <ProtectedRoute>
+              <ZoneManagement />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/enterprise/meter-management"
+          element={
+            <ProtectedRoute>
+              <EMeterManagement />
+            </ProtectedRoute>
+          }
+        />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>

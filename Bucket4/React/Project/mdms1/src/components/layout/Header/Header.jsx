@@ -34,20 +34,36 @@ export default function Header() {
   const handleNotificationClick = () => {
     if (!currentUser) return navigate('/');
 
-    if (currentUser.role === 'zone') {
-      navigate('/zone/notifications');
-    } else {
-      navigate('/enduser/alerts');
+    switch (currentUser.role) {
+      case 'enduser':
+        navigate('/enduser/alerts');
+        break;
+      case 'zone':
+        navigate('/zone/settings');
+        break;
+      case 'enterprise':
+        navigate('/enterprise/dashboard');
+        break;
+      default:
+        navigate('/');
     }
   };
 
   const handleProfileClick = () => {
     if (!currentUser) return navigate('/');
 
-    if (currentUser.role === 'zone') {
-      navigate('/zone/settings');
-    } else {
-      navigate('/enduser/profile');
+    switch (currentUser.role) {
+      case 'enduser':
+        navigate('/enduser/profile');
+        break;
+      case 'zone':
+        navigate('/zone/settings');
+        break;
+      case 'enterprise':
+        navigate('/enterprise/settings');
+        break;
+      default:
+        navigate('/');
     }
   };
 
@@ -138,14 +154,14 @@ export default function Header() {
 
                 <button
                   onClick={handleProfileClick}
-                  className="w-full flex items-center gap-2 px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition"
+                  className="w-full bg-white flex items-center gap-2 px-4 py-2 text-sm text-black hover:bg-gray-100 dark:hover:bg-gray-700 transition"
                 >
                   <User size={16} /> Profile
                 </button>
 
                 <button
                   onClick={handleLogout}
-                  className="w-full flex items-center gap-2 px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-700 transition"
+                  className="w-full flex bg-white items-center gap-2 px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-700 transition"
                 >
                   <LogOut size={16} /> Logout
                 </button>

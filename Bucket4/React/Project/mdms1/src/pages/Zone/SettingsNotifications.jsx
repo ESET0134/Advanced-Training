@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
-import Header from "../../components/layout/Header/Header";
-import ZoneSidebar from "../../components/layout/Sidebar/ZoneSidebar";
+import React, { useState, useEffect } from 'react';
+import Header from '../../components/layout/Header/Header';
+import ZoneSidebar from '../../components/layout/Sidebar/ZoneSidebar';
 
 export default function SettingsNotifications() {
-  const [activeTab, setActiveTab] = useState("settings");
+  const [activeTab, setActiveTab] = useState('settings');
 
   const [settings, setSettings] = useState({
     highThreshold: 600,
     lowThreshold: 300,
     abnormalFreq: 4,
-    inactiveDay: "Sunday",
+    inactiveDay: 'Sunday',
   });
 
   const [notifications, setNotifications] = useState({
@@ -19,16 +19,16 @@ export default function SettingsNotifications() {
   });
 
   useEffect(() => {
-    const savedSettings = JSON.parse(localStorage.getItem("zone_settings"));
-    const savedNotif = JSON.parse(localStorage.getItem("zone_notifications"));
+    const savedSettings = JSON.parse(localStorage.getItem('zone_settings'));
+    const savedNotif = JSON.parse(localStorage.getItem('zone_notifications'));
     if (savedSettings) setSettings(savedSettings);
     if (savedNotif) setNotifications(savedNotif);
   }, []);
 
   const saveSettings = () => {
-    localStorage.setItem("zone_settings", JSON.stringify(settings));
-    localStorage.setItem("zone_notifications", JSON.stringify(notifications));
-    alert("Preferences saved successfully!");
+    localStorage.setItem('zone_settings', JSON.stringify(settings));
+    localStorage.setItem('zone_notifications', JSON.stringify(notifications));
+    alert('Preferences saved successfully!');
   };
 
   return (
@@ -61,13 +61,14 @@ export default function SettingsNotifications() {
               ))}
             </div>
 
-            {activeTab === "settings" && (
+            {activeTab === 'settings' && (
               <div>
                 <h2 className="font-medium mb-2 dark:text-white">
                   Alert Thresholds
                 </h2>
                 <p className="text-gray-500 text-sm mb-6">
-                  Set consumption limits that trigger automatic alerts for meters in your zone.
+                  Set consumption limits that trigger automatic alerts for
+                  meters in your zone.
                 </p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -154,17 +155,20 @@ export default function SettingsNotifications() {
                       className="border rounded-md px-3 bg-white py-2 w-full dark:bg-gray-700 dark:text-white"
                       value={settings.inactiveDay}
                       onChange={(e) =>
-                        setSettings({ ...settings, inactiveDay: e.target.value })
+                        setSettings({
+                          ...settings,
+                          inactiveDay: e.target.value,
+                        })
                       }
                     >
                       {[
-                        "Sunday",
-                        "Monday",
-                        "Tuesday",
-                        "Wednesday",
-                        "Thursday",
-                        "Friday",
-                        "Saturday",
+                        'Sunday',
+                        'Monday',
+                        'Tuesday',
+                        'Wednesday',
+                        'Thursday',
+                        'Friday',
+                        'Saturday',
                       ].map((day) => (
                         <option key={day}>{day}</option>
                       ))}
@@ -183,7 +187,7 @@ export default function SettingsNotifications() {
               </div>
             )}
 
-            {activeTab === "notifications" && (
+            {activeTab === 'notifications' && (
               <div className="flex flex-col items-center">
                 <div className="space-y-6 mt-6">
                   {Object.keys(notifications).map((key) => (

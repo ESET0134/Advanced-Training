@@ -11,33 +11,46 @@ const DEFAULT_USER = {
 };
 
 const ZONE_USER = {
-  name: 'ZoneAdmin',
+  name: 'Zone Admin',
   email: 'zone@mdms.com',
   password: 'zone123',
   role: 'zone',
   zone: 'Bangalore South',
 };
 
+const ENTERPRISE_USER = {
+  name: 'Enterprise Admin',
+  email: 'enterprise@mdms.com',
+  password: 'enterprise123',
+  role: 'enterprise',
+  organization: 'MDMS Corp',
+};
+
 export const authService = {
   init() {
     const stored = localStorage.getItem(STORAGE_KEY);
+    let users = [];
 
     try {
       const parsed = JSON.parse(stored);
-
-      if (Array.isArray(parsed)) return;
-
-      if (parsed && typeof parsed === 'object') {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify([parsed, ZONE_USER]));
-        return;
+      if (Array.isArray(parsed)) {
+        users = parsed;
+      } else if (parsed && typeof parsed === 'object') {
+        users = [parsed];
       }
     } catch {
+      users = [];
     }
 
-    localStorage.setItem(
-      STORAGE_KEY,
-      JSON.stringify([DEFAULT_USER, ZONE_USER])
-    );
+    const hasEndUser = users.some((u) => u.role === 'enduser');
+    const hasZoneUser = users.some((u) => u.role === 'zone');
+    const hasEnterpriseUser = users.some((u) => u.role === 'enterprise');
+
+    if (!hasEndUser) users.push(DEFAULT_USER);
+    if (!hasZoneUser) users.push(ZONE_USER);
+    if (!hasEnterpriseUser) users.push(ENTERPRISE_USER);
+
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(users));
   },
 
   login({ email, password, rememberMe }) {
@@ -58,7 +71,7 @@ export const authService = {
         timestamp: new Date().toLocaleString(),
         user: user.name,
         email: user.email,
-        zone: user.zone,
+        zone: user.zone || '-',
         status: 'Login Successful',
       });
       localStorage.setItem('userLogs', JSON.stringify(logs));
@@ -117,10 +130,31 @@ export const authService = {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(updatedUsers));
 
     const updatedUser = updatedUsers.find((u) => u.email === current.email);
+
     localStorage.setItem(CURRENT_USER_KEY, JSON.stringify(updatedUser));
     sessionStorage.setItem(CURRENT_USER_KEY, JSON.stringify(updatedUser));
 
     return updatedUser;
+  },
+
+  resetPassword(email, newPassword) {
+    const users = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+    const updatedUsers = users.map((u) =>
+      u.email === email ? { ...u, password: newPassword } : u
+    );
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(updatedUsers));
+
+    const logs = JSON.parse(localStorage.getItem('userLogs')) || [];
+    logs.unshift({
+      timestamp: new Date().toLocaleString(),
+      user: email,
+      email,
+      zone: '-',
+      status: 'Password Reset',
+    });
+    localStorage.setItem('userLogs', JSON.stringify(logs));
+
+    return true;
   },
 };
 

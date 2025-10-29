@@ -26,10 +26,15 @@ export default function Login() {
     e.preventDefault();
     const res = login({ email, password, rememberMe });
     if (res.success) {
-      if (res.user.role === 'enduser') {
+      const role = res.user?.role;
+      if (role === 'enduser') {
         navigate('/enduser/dashboard', { replace: true });
-      } else if (res.user.role === 'zone') {
+      } else if (role === 'zone') {
         navigate('/zone/dashboard', { replace: true });
+      } else if (role === 'enterprise') {
+        navigate('/enterprise/dashboard', { replace: true });
+      } else {
+        navigate('/enduser/dashboard', { replace: true });
       }
     } else {
       alert('Invalid credentials');
