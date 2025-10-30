@@ -83,15 +83,29 @@ export default function ProfileSettings() {
   };
 
   const handleSecuritySave = () => {
-    const sessionData = JSON.parse(sessionStorage.getItem('mdms_current_user'));
-    const localAuth = JSON.parse(localStorage.getItem('mdms_auth_user'));
+    let currentUser =
+      JSON.parse(sessionStorage.getItem('mdms_current_user')) ||
+      JSON.parse(localStorage.getItem('mdms_current_user'));
 
-    if (!sessionData && !localAuth)
-      return setMessage('User session not found!');
+    if (!currentUser) {
+      const users = JSON.parse(localStorage.getItem('mdms_auth_user')) || [];
+      currentUser = users.find((u) => u.role === 'enduser') || null;
+    }
 
-    const currentPassword = sessionData?.password || localAuth?.password || '';
+    if (!currentUser || currentUser.role !== 'enduser') {
+      setMessage('Unable to verify end user account.');
+      return;
+    }
 
-    if (security.currentPassword !== currentPassword) {
+    const users = JSON.parse(localStorage.getItem('mdms_auth_user')) || [];
+    const matched = users.find((u) => u.email === currentUser.email);
+
+    if (!matched) {
+      setMessage('User not found.');
+      return;
+    }
+
+    if (security.currentPassword !== matched.password) {
       setMessage('Incorrect current password!');
       return;
     }
@@ -101,15 +115,14 @@ export default function ProfileSettings() {
       return;
     }
 
-    if (sessionData) {
-      sessionData.password = security.newPassword;
-      sessionStorage.setItem('mdms_current_user', JSON.stringify(sessionData));
-    }
+    const updatedUsers = users.map((u) =>
+      u.email === matched.email ? { ...u, password: security.newPassword } : u
+    );
+    localStorage.setItem('mdms_auth_user', JSON.stringify(updatedUsers));
 
-    if (localAuth) {
-      localAuth.password = security.newPassword;
-      localStorage.setItem('mdms_auth_user', JSON.stringify(localAuth));
-    }
+    const updatedUser = { ...currentUser, password: security.newPassword };
+    localStorage.setItem('mdms_current_user', JSON.stringify(updatedUser));
+    sessionStorage.setItem('mdms_current_user', JSON.stringify(updatedUser));
 
     setMessage('Password updated successfully!');
     setSecurity({ currentPassword: '', newPassword: '', confirmPassword: '' });

@@ -7,33 +7,30 @@ export default function ResetPassword() {
   const navigate = useNavigate();
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [email, setEmail] = useState('');
+  const [resetData, setResetData] = useState(null);
 
   useEffect(() => {
-    const email = sessionStorage.getItem('reset_email');
-    if (!email) {
+    const data = sessionStorage.getItem('reset_user');
+    if (!data) {
       navigate('/forgot-password', { replace: true });
     } else {
-      setEmail(email);
+      setResetData(JSON.parse(data));
     }
   }, [navigate]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!resetData) return;
+
     if (password !== confirmPassword) {
       alert('Passwords do not match!');
       return;
     }
 
-    const user = JSON.parse(localStorage.getItem('mdms_auth_user'));
-    if (user && user.email === email) {
-      authService.updateProfile({ password });
-      alert('Password updated successfully! Please login again.');
-      localStorage.removeItem('reset_email');
-      navigate('/');
-    } else {
-      alert('Something went wrong. Please try again.');
-    }
+    authService.resetPassword(resetData.email, password);
+    alert('Password updated successfully! Please login again.');
+    sessionStorage.removeItem('reset_user');
+    navigate('/');
   };
 
   return (
@@ -68,7 +65,6 @@ export default function ResetPassword() {
 
           <button
             type="submit"
-            onClick={() => navigate('/')}
             className="border border-black px-6 text-black py-1 rounded-full bg-transparent dark:text-white dark:border-white"
           >
             Update Password
