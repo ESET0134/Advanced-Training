@@ -26,8 +26,19 @@ export default function ProfileSettings() {
 
   useEffect(() => {
     const localData = JSON.parse(localStorage.getItem('endUserData'));
+    const currentUser =
+      JSON.parse(sessionStorage.getItem('mdms_current_user')) ||
+      JSON.parse(localStorage.getItem('mdms_current_user'));
 
-    if (localData) {
+    if (currentUser) {
+      setProfile((prev) => ({
+        ...prev,
+        name: currentUser.name || '',
+        email: currentUser.email || '',
+        mobile: currentUser.mobile || '',
+        profilePicture: currentUser.profilePicture || '',
+      }));
+    } else if (localData) {
       setProfile((prev) => ({
         ...prev,
         name: localData.name || '',
@@ -35,70 +46,61 @@ export default function ProfileSettings() {
         mobile: localData.mobile || '',
         profilePicture: localData.profilePicture || '',
       }));
-
-      if (localData.notifications) setNotifications(localData.notifications);
     }
+
+    if (localData?.notifications) setNotifications(localData.notifications);
   }, []);
 
+  // ✅ Update only enduser object inside mdms_auth_user array
   const handleProfileSave = () => {
-    const authUser = JSON.parse(localStorage.getItem('mdms_auth_user')) || {};
-    const endUserData = JSON.parse(localStorage.getItem('endUserData')) || {};
-    const sessionUser =
-      JSON.parse(sessionStorage.getItem('mdms_current_user')) || {};
+    const users = JSON.parse(localStorage.getItem('mdms_auth_user')) || [];
+    const currentUser =
+      JSON.parse(sessionStorage.getItem('mdms_current_user')) ||
+      users.find((u) => u.role === 'enduser');
 
-    const updatedAuthUser = {
-      ...authUser,
-      name: profile.name || authUser.name,
-      mobile: profile.mobile || authUser.mobile,
-      email: profile.email || authUser.email,
-      profilePicture: profile.profilePicture || authUser.profilePicture,
-      notifications: notifications || authUser.notifications,
-    };
+    if (!currentUser) {
+      setMessage('Unable to verify end user account.');
+      return;
+    }
 
-    const updatedEndUser = {
-      ...endUserData,
-      name: profile.name || endUserData.name,
-      mobile: profile.mobile || endUserData.mobile,
-      email: profile.email || endUserData.email,
-      profilePicture: profile.profilePicture || endUserData.profilePicture,
-      notifications: notifications || endUserData.notifications,
-    };
-
-    if (!updatedAuthUser.email) updatedAuthUser.email = authUser.email;
-    if (!updatedAuthUser.password) updatedAuthUser.password = authUser.password;
-    if (!updatedAuthUser.role) updatedAuthUser.role = authUser.role;
-    if (!updatedAuthUser.zone) updatedAuthUser.zone = authUser.zone;
-    if (!updatedEndUser.email) updatedEndUser.email = endUserData.email;
-    if (!updatedEndUser.zone) updatedEndUser.zone = endUserData.zone;
-
-    localStorage.setItem('mdms_auth_user', JSON.stringify(updatedAuthUser));
-    localStorage.setItem('endUserData', JSON.stringify(updatedEndUser));
-    sessionStorage.setItem(
-      'mdms_current_user',
-      JSON.stringify(updatedAuthUser)
+    const updatedUsers = users.map((u) =>
+      u.role === 'enduser'
+        ? {
+            ...u,
+            name: profile.name || u.name,
+            email: profile.email || u.email,
+            mobile: profile.mobile || u.mobile,
+            profilePicture: profile.profilePicture || u.profilePicture,
+            notifications: notifications || u.notifications,
+          }
+        : u
     );
+
+    localStorage.setItem('mdms_auth_user', JSON.stringify(updatedUsers));
+
+    const updatedUser = updatedUsers.find((u) => u.role === 'enduser');
+
+    localStorage.setItem('mdms_current_user', JSON.stringify(updatedUser));
+    sessionStorage.setItem('mdms_current_user', JSON.stringify(updatedUser));
+    localStorage.setItem('endUserData', JSON.stringify(updatedUser));
 
     setMessage('Profile updated successfully!');
     setTimeout(() => setMessage(''), 2500);
   };
 
+  // ✅ Password change always updates correct enduser
   const handleSecuritySave = () => {
-    let currentUser =
+    const users = JSON.parse(localStorage.getItem('mdms_auth_user')) || [];
+    const currentUser =
       JSON.parse(sessionStorage.getItem('mdms_current_user')) ||
-      JSON.parse(localStorage.getItem('mdms_current_user'));
-
-    if (!currentUser) {
-      const users = JSON.parse(localStorage.getItem('mdms_auth_user')) || [];
-      currentUser = users.find((u) => u.role === 'enduser') || null;
-    }
+      users.find((u) => u.role === 'enduser');
 
     if (!currentUser || currentUser.role !== 'enduser') {
       setMessage('Unable to verify end user account.');
       return;
     }
 
-    const users = JSON.parse(localStorage.getItem('mdms_auth_user')) || [];
-    const matched = users.find((u) => u.email === currentUser.email);
+    const matched = users.find((u) => u.role === 'enduser');
 
     if (!matched) {
       setMessage('User not found.');
@@ -116,11 +118,16 @@ export default function ProfileSettings() {
     }
 
     const updatedUsers = users.map((u) =>
-      u.email === matched.email ? { ...u, password: security.newPassword } : u
+      u.role === 'enduser' ? { ...u, password: security.newPassword } : u
     );
+
     localStorage.setItem('mdms_auth_user', JSON.stringify(updatedUsers));
 
-    const updatedUser = { ...currentUser, password: security.newPassword };
+    const updatedUser = {
+      ...currentUser,
+      password: security.newPassword,
+    };
+
     localStorage.setItem('mdms_current_user', JSON.stringify(updatedUser));
     sessionStorage.setItem('mdms_current_user', JSON.stringify(updatedUser));
 
@@ -180,6 +187,7 @@ export default function ProfileSettings() {
               </p>
             )}
 
+            {/* --- Profile Tab --- */}
             {activeTab === 'profile' && (
               <div className="flex flex-col items-center">
                 <div className="relative mb-6">
@@ -256,6 +264,7 @@ export default function ProfileSettings() {
               </div>
             )}
 
+            {/* --- Security Tab --- */}
             {activeTab === 'security' && (
               <div className="flex flex-col items-center">
                 <div className="w-24 h-24 rounded-full bg-black flex items-center justify-center text-white text-3xl mb-6">
@@ -321,6 +330,7 @@ export default function ProfileSettings() {
               </div>
             )}
 
+            {/* --- Notification Tab --- */}
             {activeTab === 'notification' && (
               <div className="flex flex-col items-center space-y-8">
                 <h2 className="text-sm font-medium text-gray-700 dark:text-white">
