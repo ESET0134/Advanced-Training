@@ -82,6 +82,7 @@ export default function Header() {
   }, []);
 
   const handleLogout = () => {
+    window.dispatchEvent(new Event('logout'));
     logout();
     navigate('/', { replace: true });
   };

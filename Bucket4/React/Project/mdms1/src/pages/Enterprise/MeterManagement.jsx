@@ -33,6 +33,12 @@ export default function MeterManagement() {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  useEffect(() => {
+    window.dispatchEvent(
+      new CustomEvent('resourceVisited', { detail: 'Meter management' })
+    );
+  }, []);
+
   function loadMeters() {
     const data = enterpriseDataService.getEnterpriseMeters();
     setMeters(data);

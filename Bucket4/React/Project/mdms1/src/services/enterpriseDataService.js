@@ -44,6 +44,7 @@ let enterpriseZones = JSON.parse(localStorage.getItem('enterprise_zones')) || [
 ];
 
 const ENTERPRISE_METERS_KEY = 'enterpriseMeters';
+const ENTERPRISE_USERS_KEY = 'enterprise_users';
 
 const defaultMeters = [
   {
@@ -99,6 +100,144 @@ const defaultChartData = [
   { name: 'Mumbai', usage: 85 },
   { name: 'Chennai', usage: 69 },
   { name: 'Kolkata', usage: 90 },
+];
+
+const defaultUsers = [
+  {
+    id: 201,
+    name: 'Amit',
+    email: 'amit@gmail.com',
+    role: 'Admin',
+    zone: 'Mangalore',
+    status: 'Active',
+    year: 2025,
+  },
+  {
+    id: 202,
+    name: 'Sonia',
+    email: 'sonia@gmail.com',
+    role: 'Viewer',
+    zone: 'Bangalore',
+    status: 'De-Activated',
+    year: 2025,
+  },
+  {
+    id: 203,
+    name: 'Ravi',
+    email: 'ravi@gmail.com',
+    role: 'Support',
+    zone: 'Delhi',
+    status: 'Active',
+    year: 2025,
+  },
+  {
+    id: 204,
+    name: 'Meena',
+    email: 'meena@gmail.com',
+    role: 'Admin',
+    zone: 'Mumbai',
+    status: 'Active',
+    year: 2024,
+  },
+  {
+    id: 205,
+    name: 'Kiran',
+    email: 'kiran@gmail.com',
+    role: 'Viewer',
+    zone: 'Chennai',
+    status: 'De-Activated',
+    year: 2024,
+  },
+  {
+    id: 206,
+    name: 'Tina',
+    email: 'tina@gmail.com',
+    role: 'Support',
+    zone: 'Kolkata',
+    status: 'Active',
+    year: 2024,
+  },
+  {
+    id: 207,
+    name: 'Rohan',
+    email: 'rohan@gmail.com',
+    role: 'Admin',
+    zone: 'Mangalore',
+    status: 'Active',
+    year: 2023,
+  },
+  {
+    id: 208,
+    name: 'Sneha',
+    email: 'sneha@gmail.com',
+    role: 'Viewer',
+    zone: 'Delhi',
+    status: 'Active',
+    year: 2023,
+  },
+  {
+    id: 209,
+    name: 'Neha',
+    email: 'neha@gmail.com',
+    role: 'Support',
+    zone: 'Mumbai',
+    status: 'De-Activated',
+    year: 2023,
+  },
+  {
+    id: 210,
+    name: 'Varun',
+    email: 'varun@gmail.com',
+    role: 'Viewer',
+    zone: 'Chennai',
+    status: 'Active',
+    year: 2025,
+  },
+  {
+    id: 211,
+    name: 'Rahul',
+    email: 'rahul@gmail.com',
+    role: 'Admin',
+    zone: 'Kolkata',
+    status: 'Active',
+    year: 2024,
+  },
+  {
+    id: 212,
+    name: 'Deepa',
+    email: 'deepa@gmail.com',
+    role: 'Support',
+    zone: 'Bangalore',
+    status: 'De-Activated',
+    year: 2023,
+  },
+  {
+    id: 213,
+    name: 'Rita',
+    email: 'rita@gmail.com',
+    role: 'Viewer',
+    zone: 'Delhi',
+    status: 'Active',
+    year: 2025,
+  },
+  {
+    id: 214,
+    name: 'Arjun',
+    email: 'arjun@gmail.com',
+    role: 'Viewer',
+    zone: 'Mumbai',
+    status: 'De-Activated',
+    year: 2024,
+  },
+  {
+    id: 215,
+    name: 'Shruti',
+    email: 'shruti@gmail.com',
+    role: 'Admin',
+    zone: 'Mangalore',
+    status: 'Active',
+    year: 2025,
+  },
 ];
 
 export const enterpriseDataService = {
@@ -164,6 +303,31 @@ export const enterpriseDataService = {
     ];
   },
 
+  getEnterpriseZones() {
+    return enterpriseZones;
+  },
+
+  addZone(newZone) {
+    const id = enterpriseZones.length
+      ? Math.max(...enterpriseZones.map((z) => z.id)) + 1
+      : 1;
+    const zone = { id, ...newZone };
+    enterpriseZones.push(zone);
+    localStorage.setItem('enterprise_zones', JSON.stringify(enterpriseZones));
+  },
+
+  updateZone(id, updated) {
+    enterpriseZones = enterpriseZones.map((z) =>
+      z.id === id ? { ...z, ...updated } : z
+    );
+    localStorage.setItem('enterprise_zones', JSON.stringify(enterpriseZones));
+  },
+
+  deleteZone(id) {
+    enterpriseZones = enterpriseZones.filter((z) => z.id !== id);
+    localStorage.setItem('enterprise_zones', JSON.stringify(enterpriseZones));
+  },
+
   getAlerts() {
     return [
       {
@@ -194,31 +358,6 @@ export const enterpriseDataService = {
         zone: 'Pumpwell zone',
       },
     ];
-  },
-
-  getEnterpriseZones() {
-    return enterpriseZones;
-  },
-
-  addZone(newZone) {
-    const id = enterpriseZones.length
-      ? Math.max(...enterpriseZones.map((z) => z.id)) + 1
-      : 1;
-    const zone = { id, ...newZone };
-    enterpriseZones.push(zone);
-    localStorage.setItem('enterprise_zones', JSON.stringify(enterpriseZones));
-  },
-
-  updateZone(id, updated) {
-    enterpriseZones = enterpriseZones.map((z) =>
-      z.id === id ? { ...z, ...updated } : z
-    );
-    localStorage.setItem('enterprise_zones', JSON.stringify(enterpriseZones));
-  },
-
-  deleteZone(id) {
-    enterpriseZones = enterpriseZones.filter((z) => z.id !== id);
-    localStorage.setItem('enterprise_zones', JSON.stringify(enterpriseZones));
   },
 
   getEnterpriseMeters() {
@@ -252,5 +391,54 @@ export const enterpriseDataService = {
 
   updateChartData(newData) {
     localStorage.setItem(ENTERPRISE_CHART_KEY, JSON.stringify(newData));
+  },
+
+  getUsers() {
+    const stored = JSON.parse(localStorage.getItem(ENTERPRISE_USERS_KEY));
+    if (stored && stored.length > 0) return stored;
+    localStorage.setItem(ENTERPRISE_USERS_KEY, JSON.stringify(defaultUsers));
+    return defaultUsers;
+  },
+
+  addUser(newUser) {
+    const users = this.getUsers();
+    const id = users.length ? Math.max(...users.map((u) => u.id)) + 1 : 1;
+    const newEntry = { id, ...newUser };
+    users.push(newEntry);
+    localStorage.setItem(ENTERPRISE_USERS_KEY, JSON.stringify(users));
+  },
+
+  updateUser(id, updatedUser) {
+    const users = this.getUsers().map((u) =>
+      u.id === id ? { ...u, ...updatedUser } : u
+    );
+    localStorage.setItem(ENTERPRISE_USERS_KEY, JSON.stringify(users));
+  },
+
+  deleteUser(id) {
+    const users = this.getUsers().filter((u) => u.id !== id);
+    localStorage.setItem(ENTERPRISE_USERS_KEY, JSON.stringify(users));
+  },
+
+  getUsersAvailableYears() {
+    const users = this.getUsers();
+    const years = [...new Set(users.map((u) => u.year))];
+    return years.sort();
+  },
+
+  getUsersCountsByYear(year) {
+    const users = this.getUsers().filter((u) => u.year === year);
+    const activeCount = users.filter((u) => u.status === 'Active').length;
+    const inactiveCount = users.filter(
+      (u) => u.status === 'De-Activated'
+    ).length;
+
+    return [
+      { category: 'Active', value: (activeCount / users.length) * 100 || 0 },
+      {
+        category: 'De-Activated',
+        value: (inactiveCount / users.length) * 100 || 0,
+      },
+    ];
   },
 };

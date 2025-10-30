@@ -33,6 +33,12 @@ export default function ZoneManagement() {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  useEffect(() => {
+    window.dispatchEvent(
+      new CustomEvent('resourceVisited', { detail: 'Zone management' })
+    );
+  }, []);
+
   function loadZones() {
     const data = enterpriseDataService.getEnterpriseZones();
     setZones(data);
