@@ -224,6 +224,19 @@ END;
 
 GO
 
+CREATE TABLE ConsumerLogin (
+    ConsumerLoginID INT IDENTITY(1,1) PRIMARY KEY,
+    ConsumerID INT NOT NULL UNIQUE REFERENCES Consumer(ConsumerID) ON DELETE CASCADE,
+    Username NVARCHAR(50) NOT NULL UNIQUE,
+    Password NVARCHAR(255) NOT NULL,
+    LastLogin DATETIME2(3) NULL,
+    IsVerified BIT DEFAULT 0,
+    Status NVARCHAR(20) DEFAULT 'Active' 
+        CHECK (Status IN ('Active', 'Inactive'))
+);
+
+GO
+
 INSERT INTO Users (Username, Password, DisplayName, Email, Phone, LastLogin, Status)
 VALUES
 ('admin', 'admin123', 'Administrator', 'admin@ami.com', '9999999999', '2025-10-30 09:00:00', 'Active'),
@@ -299,6 +312,15 @@ VALUES
 
 GO
 
+INSERT INTO ConsumerLogin (ConsumerID, Username, Password, IsVerified)
+VALUES
+(1, 'ravi_kumar', 'ravi@123', 1),
+(2, 'priya_sharma', 'priya@123', 1),
+(3, 'techcorp', 'corp@123', 0),
+(4, 'megafactory', 'factory@123', 0);
+
+GO
+
 SELECT * FROM Meter
 SELECT * FROM Users
 SELECT * FROM OrgUnit
@@ -308,3 +330,4 @@ SELECT * FROM Consumer
 SELECT * FROM DailyConsumption
 SELECT * FROM MonthlyConsumption
 SELECT * FROM Bill
+SELECT * FROM ConsumerLogin
