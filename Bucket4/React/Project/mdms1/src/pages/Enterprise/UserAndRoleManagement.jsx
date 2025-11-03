@@ -259,7 +259,7 @@ export default function UserAndRoleManagement() {
                         <td className="px-4 py-2 text-sm">
                           {editingId === u.id ? (
                             <input
-                              className="border rounded px-2 py-1 text-sm w-32"
+                              className="border rounded px-2 py-1 bg-transparent border-black text-sm w-32"
                               value={editModel.name}
                               onChange={(e) =>
                                 setEditModel({
@@ -275,7 +275,7 @@ export default function UserAndRoleManagement() {
                         <td className="px-4 py-2 text-sm">
                           {editingId === u.id ? (
                             <input
-                              className="border rounded px-2 py-1 text-sm w-48"
+                              className="border rounded bg-transparent border-black px-2 py-1 text-sm w-48"
                               value={editModel.email}
                               onChange={(e) =>
                                 setEditModel({
@@ -291,7 +291,7 @@ export default function UserAndRoleManagement() {
                         <td className="px-4 py-2 text-sm">
                           {editingId === u.id ? (
                             <select
-                              className="border rounded px-2 py-1 text-sm"
+                              className="border rounded bg-transparent border-black px-2 py-1 text-sm"
                               value={editModel.role}
                               onChange={(e) =>
                                 setEditModel({
@@ -317,7 +317,7 @@ export default function UserAndRoleManagement() {
                         >
                           {editingId === u.id ? (
                             <select
-                              className="border rounded px-2 py-1 text-sm"
+                              className="border rounded bg-transparent border-black px-2 py-1 text-sm"
                               value={editModel.status}
                               onChange={(e) =>
                                 setEditModel({
@@ -339,13 +339,13 @@ export default function UserAndRoleManagement() {
                             <>
                               <button
                                 onClick={onSaveEdit}
-                                className="text-green-600 mr-3"
+                                className="text-green-600 mr-3 bg-white border-black"
                               >
                                 Save
                               </button>
                               <button
                                 onClick={onCancelEdit}
-                                className="text-gray-700"
+                                className="text-gray-700 bg-white border-black"
                               >
                                 Cancel
                               </button>

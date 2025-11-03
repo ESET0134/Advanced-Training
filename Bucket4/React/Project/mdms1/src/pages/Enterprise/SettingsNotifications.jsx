@@ -88,7 +88,7 @@ export default function SettingsNotifications() {
                     </label>
                     <input
                       type="number"
-                      className="border rounded-md px-3 py-2 w-full dark:bg-gray-700 dark:text-white"
+                      className="border rounded-md px-3 py-2 w-full bg-gray-300 dark:bg-gray-700 dark:text-white"
                       value={settings.dataRetentionDays}
                       onChange={(e) =>
                         setSettings({
@@ -105,7 +105,7 @@ export default function SettingsNotifications() {
                     </label>
                     <input
                       type="number"
-                      className="border rounded-md px-3 py-2 w-full dark:bg-gray-700 dark:text-white"
+                      className="border rounded-md px-3 py-2 w-full bg-gray-300 dark:bg-gray-700 dark:text-white"
                       value={settings.autoLogoutMinutes}
                       onChange={(e) =>
                         setSettings({
@@ -122,7 +122,7 @@ export default function SettingsNotifications() {
                     </label>
                     <input
                       type="number"
-                      className="border rounded-md px-3 py-2 w-full dark:bg-gray-700 dark:text-white"
+                      className="border rounded-md px-3 py-2 w-full bg-gray-300 dark:bg-gray-700 dark:text-white"
                       value={settings.auditLogRetentionDays}
                       onChange={(e) =>
                         setSettings({
@@ -148,7 +148,7 @@ export default function SettingsNotifications() {
                       Timezone
                     </label>
                     <select
-                      className="border rounded-md px-3 py-2 w-full dark:bg-gray-700 dark:text-white"
+                      className="border rounded-md px-3 py-2 bg-gray-300 w-full dark:bg-gray-700 dark:text-white"
                       value={settings.timezone}
                       onChange={(e) =>
                         setSettings({ ...settings, timezone: e.target.value })
@@ -172,7 +172,7 @@ export default function SettingsNotifications() {
                       Default Language
                     </label>
                     <select
-                      className="border rounded-md px-3 py-2 w-full dark:bg-gray-700 dark:text-white"
+                      className="border rounded-md px-3 py-2 bg-gray-300 w-full dark:bg-gray-700 dark:text-white"
                       value={settings.language}
                       onChange={(e) =>
                         setSettings({ ...settings, language: e.target.value })
@@ -191,7 +191,7 @@ export default function SettingsNotifications() {
                       Currency Format
                     </label>
                     <select
-                      className="border rounded-md px-3 py-2 w-full dark:bg-gray-700 dark:text-white"
+                      className="border rounded-md px-3 py-2 bg-gray-300 w-full dark:bg-gray-700 dark:text-white"
                       value={settings.currency}
                       onChange={(e) =>
                         setSettings({ ...settings, currency: e.target.value })

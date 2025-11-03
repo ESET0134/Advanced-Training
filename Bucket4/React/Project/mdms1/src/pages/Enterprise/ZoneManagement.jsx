@@ -175,7 +175,7 @@ export default function ZoneManagement() {
                         <td className="px-4 py-2 text-sm">
                           {editingId === z.id ? (
                             <input
-                              className="border rounded px-2 py-1 text-sm w-40"
+                              className="border rounded px-2 py-1 bg-transparent border-black text-sm w-40"
                               value={editModel.zoneName}
                               onChange={(e) =>
                                 setEditModel({
@@ -191,7 +191,7 @@ export default function ZoneManagement() {
                         <td className="px-4 py-2 text-sm">
                           {editingId === z.id ? (
                             <input
-                              className="border rounded px-2 py-1 text-sm w-36"
+                              className="border rounded px-2 py-1 bg-transparent border-black text-sm w-36"
                               value={editModel.admin}
                               onChange={(e) =>
                                 setEditModel({
@@ -220,13 +220,13 @@ export default function ZoneManagement() {
                             <>
                               <button
                                 onClick={onSaveEdit}
-                                className="text-green-600 mr-3"
+                                className="text-green-600 bg-white border-black mr-3"
                               >
                                 Save
                               </button>
                               <button
                                 onClick={onCancelEdit}
-                                className="text-gray-700"
+                                className="text-gray-700 bg-white border-black"
                               >
                                 Cancel
                               </button>

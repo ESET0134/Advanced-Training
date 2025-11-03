@@ -178,7 +178,7 @@ export default function MeterManagement() {
                         <td className="px-4 py-2 text-sm">
                           {editingId === m.id ? (
                             <input
-                              className="border rounded px-2 py-1 text-sm w-32"
+                              className="border rounded bg-transparent border-black px-2 py-1 text-sm w-32"
                               value={editModel.zone}
                               onChange={(e) =>
                                 setEditModel({
@@ -194,7 +194,7 @@ export default function MeterManagement() {
                         <td className="px-4 py-2 text-sm">
                           {editingId === m.id ? (
                             <input
-                              className="border rounded px-2 py-1 text-sm w-32"
+                              className="border rounded bg-transparent border-black px-2 py-1 text-sm w-32"
                               value={editModel.owner}
                               onChange={(e) =>
                                 setEditModel({
@@ -223,13 +223,13 @@ export default function MeterManagement() {
                             <>
                               <button
                                 onClick={onSaveEdit}
-                                className="text-green-600 mr-3"
+                                className="text-green-600 mr-3 bg-white border-black"
                               >
                                 Save
                               </button>
                               <button
                                 onClick={onCancelEdit}
-                                className="text-gray-700"
+                                className="text-gray-700 bg-white border-black"
                               >
                                 Cancel
                               </button>

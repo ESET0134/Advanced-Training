@@ -205,7 +205,7 @@ export default function UserManagement() {
                         <td className="px-4 py-2 dark:text-white text-sm">
                           {editingId === u.id ? (
                             <input
-                              className="border rounded px-2 py-1 text-sm w-40"
+                              className="border rounded px-2 py-1 bg-transparent border-black text-sm w-40"
                               value={editModel.name}
                               onChange={(e) =>
                                 setEditModel({
@@ -222,7 +222,7 @@ export default function UserManagement() {
                         <td className="px-4 py-2 dark:text-white text-sm">
                           {editingId === u.id ? (
                             <input
-                              className="border rounded px-2 py-1 text-sm w-56"
+                              className="border rounded bg-transparent border-black px-2 py-1 text-sm w-56"
                               value={editModel.email}
                               onChange={(e) =>
                                 setEditModel({
@@ -239,7 +239,7 @@ export default function UserManagement() {
                         <td className="px-4 py-2 dark:text-white text-sm">
                           {editingId === u.id ? (
                             <select
-                              className="border rounded px-2 py-1 text-sm"
+                              className="border rounded bg-transparent border-black px-2 py-1 text-sm"
                               value={editModel.role}
                               onChange={(e) =>
                                 setEditModel({
@@ -260,7 +260,7 @@ export default function UserManagement() {
                         <td className="px-4 py-2 dark:text-white text-sm">
                           {editingId === u.id ? (
                             <input
-                              className="border rounded px-2 py-1 text-sm w-36"
+                              className="border rounded bg-transparent border-black px-2 py-1 text-sm w-36"
                               value={editModel.zone}
                               onChange={(e) =>
                                 setEditModel({
@@ -279,7 +279,7 @@ export default function UserManagement() {
                         >
                           {editingId === u.id ? (
                             <select
-                              className="border rounded px-2 py-1 text-sm"
+                              className="border rounded bg-transparent border-black px-2 py-1 text-sm"
                               value={editModel.status}
                               onChange={(e) =>
                                 setEditModel({
@@ -301,13 +301,13 @@ export default function UserManagement() {
                             <>
                               <button
                                 onClick={onSaveEdit}
-                                className="text-green-600 mr-3"
+                                className="text-green-600 bg-white border-black mr-3"
                               >
                                 Save
                               </button>
                               <button
                                 onClick={onCancelEdit}
-                                className="text-gray-700"
+                                className="text-gray-700 bg-white border-black"
                               >
                                 Cancel
                               </button>
