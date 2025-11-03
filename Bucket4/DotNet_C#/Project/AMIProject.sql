@@ -331,3 +331,5 @@ SELECT * FROM DailyConsumption
 SELECT * FROM MonthlyConsumption
 SELECT * FROM Bill
 SELECT * FROM ConsumerLogin
+
+GO
