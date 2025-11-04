@@ -20,15 +20,12 @@ namespace AMIProjectAPI.Controllers
             _tokenService = tokenService;
         }
 
-        // 🔹 LOGIN FOR USERS
         [HttpPost("login-user")]
         public async Task<IActionResult> LoginUser([FromBody] LoginRequest req)
         {
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == req.Username);
             if (user == null)
                 return Unauthorized("Invalid username or password");
-
-            // 🔸 Check active status
             if (!user.Status.Equals("Active", StringComparison.OrdinalIgnoreCase))
                 return Forbid("User is inactive");
 
@@ -45,7 +42,6 @@ namespace AMIProjectAPI.Controllers
             if (!passwordValid)
                 return Unauthorized("Invalid username or password");
 
-            // 🔸 Upgrade plaintext password to hash
             if (!user.Password.StartsWith("$2"))
             {
                 user.Password = BCrypt.Net.BCrypt.HashPassword(req.Password);
@@ -64,7 +60,6 @@ namespace AMIProjectAPI.Controllers
             return Ok(new { Token = token });
         }
 
-        // 🔹 LOGIN FOR CONSUMERS
         [HttpPost("login-consumer")]
         public async Task<IActionResult> LoginConsumer([FromBody] LoginRequest req)
         {
@@ -74,11 +69,9 @@ namespace AMIProjectAPI.Controllers
             if (cl == null)
                 return Unauthorized("Invalid username or password");
 
-            // 🔸 Check status
             if (!cl.Status.Equals("Active", StringComparison.OrdinalIgnoreCase))
                 return Forbid("Consumer is inactive");
 
-            // 🔸 Check verification
             if (cl.IsVerified == false)
                 return Forbid("Consumer not verified");
 
@@ -95,7 +88,6 @@ namespace AMIProjectAPI.Controllers
             if (!passwordValid)
                 return Unauthorized("Invalid username or password");
 
-            // 🔸 Upgrade plaintext to bcrypt if needed
             if (!cl.Password.StartsWith("$2"))
             {
                 cl.Password = BCrypt.Net.BCrypt.HashPassword(req.Password);
@@ -115,7 +107,6 @@ namespace AMIProjectAPI.Controllers
         }
     }
 
-    // 🔸 Simple DTO for login request
     public class LoginRequest
     {
         public string Username { get; set; } = string.Empty;
