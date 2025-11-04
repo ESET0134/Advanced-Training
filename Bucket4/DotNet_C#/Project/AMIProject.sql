@@ -1,3 +1,4 @@
+-----CREATE AND USE DATABASE-----
 CREATE DATABASE AMIProject;
 
 GO
@@ -5,6 +6,8 @@ GO
 USE AMIProject;
 
 GO
+
+-----CREATE TABLES-----
 
 CREATE TABLE Users (
     UserID INT IDENTITY(1,1) PRIMARY KEY,
@@ -68,22 +71,6 @@ CREATE TABLE Consumer (
 
 GO
 
-CREATE TRIGGER trg_Update_ConsumerTimestamp
-ON Consumer
-AFTER UPDATE
-AS
-BEGIN
-    SET NOCOUNT ON;
-
-    UPDATE c
-    SET 
-        UpdatedAt = SYSUTCDATETIME()
-    FROM Consumer c
-    INNER JOIN inserted i ON c.ConsumerID = i.ConsumerID;
-END;
-
-GO
-
 CREATE TABLE Meter (
     MeterSerialNo NVARCHAR(50) PRIMARY KEY,
     ConsumerID INT NOT NULL REFERENCES Consumer(ConsumerID),
@@ -117,14 +104,67 @@ CREATE TABLE MonthlyConsumption (
 
 GO
 
-CREATE TRIGGER trg_UpdateMonthlyConsumption
+CREATE TABLE Bill (
+    BillID INT IDENTITY(1,1) PRIMARY KEY,
+    MeterID NVARCHAR(50) NOT NULL REFERENCES Meter(MeterSerialNo),
+    MonthStartDate DATE NOT NULL,
+    MonthlyConsumptionkWh DECIMAL(10,2) NOT NULL,
+    Category NVARCHAR(50) NOT NULL CHECK (Category IN ('Residential Tariff', 'Commercial Tariff', 'Factory Tariff')),
+    BaseRate DECIMAL(10,2) NOT NULL,
+    SlabRate DECIMAL(10,2) NOT NULL,
+    TaxRate DECIMAL(10,2) NOT NULL,
+    Amount DECIMAL(18,2) NOT NULL,
+    Status NVARCHAR(20) NOT NULL DEFAULT 'Pending' 
+           CHECK (Status IN ('Paid','Pending')),
+    GeneratedAt DATETIME2(3) NOT NULL DEFAULT SYSUTCDATETIME()
+);
+
+GO
+
+CREATE TABLE ConsumerLogin (
+    ConsumerLoginID INT IDENTITY(1,1) PRIMARY KEY,
+    ConsumerID INT NOT NULL UNIQUE REFERENCES Consumer(ConsumerID) ON DELETE CASCADE,
+    Username NVARCHAR(50) NOT NULL UNIQUE,
+    Password NVARCHAR(255) NOT NULL,
+    LastLogin DATETIME2(3) NULL,
+    IsVerified BIT DEFAULT 0,
+    Status NVARCHAR(20) DEFAULT 'Active' 
+        CHECK (Status IN ('Active', 'Inactive'))
+);
+
+GO
+
+-----CREATE TRIGGERS-----
+
+CREATE OR ALTER TRIGGER trg_AutoGenerateBill
+ON MonthlyConsumption
+AFTER INSERT, UPDATE
+AS
+BEGIN
+    SET NOCOUNT ON;
+    DECLARE @Meter NVARCHAR(50);
+    DECLARE cur CURSOR LOCAL FAST_FORWARD FOR
+        SELECT DISTINCT MeterID FROM inserted;
+    OPEN cur;
+    FETCH NEXT FROM cur INTO @Meter;
+    WHILE @@FETCH_STATUS = 0
+    BEGIN
+        EXEC sp_GenerateMonthlyBills @MeterID = @Meter;
+        FETCH NEXT FROM cur INTO @Meter;
+    END
+    CLOSE cur;
+    DEALLOCATE cur;
+END;
+
+GO
+
+CREATE OR ALTER TRIGGER trg_UpdateMonthlyConsumption
 ON DailyConsumption
 AFTER INSERT, UPDATE, DELETE
 AS
 BEGIN
     SET NOCOUNT ON;
     DECLARE @ChangedMeters TABLE (MeterID NVARCHAR(50), ConsumptionMonth DATE);
-
     INSERT INTO @ChangedMeters (MeterID, ConsumptionMonth)
     SELECT DISTINCT MeterID,
            DATEFROMPARTS(YEAR(ConsumptionDate), MONTH(ConsumptionDate), 1)
@@ -133,7 +173,6 @@ BEGIN
     SELECT DISTINCT MeterID,
            DATEFROMPARTS(YEAR(ConsumptionDate), MONTH(ConsumptionDate), 1)
     FROM deleted;
-
     MERGE MonthlyConsumption AS target
     USING (
         SELECT 
@@ -153,89 +192,100 @@ BEGIN
         UPDATE SET target.ConsumptionkWh = src.TotalConsumption
     WHEN NOT MATCHED THEN
         INSERT (MeterID, MonthStartDate, ConsumptionkWh)
-        VALUES (src.MeterID, src.MonthStartDate, src.TotalConsumption)
-    WHEN NOT MATCHED BY SOURCE AND target.MeterID IN (SELECT MeterID FROM @ChangedMeters)
-        THEN DELETE;
-
-END;
-
-GO
-
-CREATE TABLE Bill (
-    BillID INT IDENTITY(1,1) PRIMARY KEY,
-    MeterID NVARCHAR(50) NOT NULL REFERENCES Meter(MeterSerialNo),
-    MonthStartDate DATE NOT NULL,
-    MonthlyConsumptionkWh DECIMAL(10,2) NOT NULL,
-    Category NVARCHAR(50) NOT NULL CHECK (Category IN ('Residential Tariff', 'Commercial Tariff', 'Factory Tariff')),
-    BaseRate DECIMAL(10,2) NOT NULL,
-    SlabRate DECIMAL(10,2) NOT NULL,
-    TaxRate DECIMAL(10,2) NOT NULL,
-    Amount DECIMAL(18,2) NOT NULL,
-    Status NVARCHAR(20) NOT NULL DEFAULT 'Pending' 
-           CHECK (Status IN ('Paid','Pending')),
-    GeneratedAt DATETIME2(3) NOT NULL DEFAULT SYSUTCDATETIME()
-);
-
-GO
-
-CREATE OR ALTER PROCEDURE sp_GenerateMonthlyBills
-AS
-BEGIN
-    SET NOCOUNT ON;
-
-    INSERT INTO Bill (MeterID, MonthStartDate, MonthlyConsumptionkWh, Category, BaseRate, SlabRate, TaxRate, Amount, Status)
-    SELECT
-        mc.MeterID,
-        mc.MonthStartDate,
-        mc.ConsumptionkWh,
-        m.Category,
-        t.BaseRate,
-        ts.RatePerKwh AS SlabRate,
-        t.TaxRate,
-        CAST(
-            mc.ConsumptionkWh * (1 + t.BaseRate) * (1 + ts.RatePerKwh) * (1 + t.TaxRate)
-            AS DECIMAL(18,2)
-        ) AS Amount,
-        'Pending'
+        VALUES (src.MeterID, src.MonthStartDate, src.TotalConsumption);
+    DELETE mc
     FROM MonthlyConsumption mc
-    INNER JOIN Meter m ON mc.MeterID = m.MeterSerialNo
-    INNER JOIN Consumer c ON m.ConsumerID = c.ConsumerID
-    INNER JOIN Tariff t ON c.TariffID = t.TariffID
-    INNER JOIN TariffSlab ts 
-        ON ts.TariffID = t.TariffID 
-        AND mc.ConsumptionkWh BETWEEN ts.FromKwh AND ts.ToKwh
     WHERE NOT EXISTS (
         SELECT 1 
-        FROM Bill b 
-        WHERE b.MeterID = mc.MeterID 
-          AND b.MonthStartDate = mc.MonthStartDate
+        FROM DailyConsumption d
+        WHERE d.MeterID = mc.MeterID
+          AND DATEFROMPARTS(YEAR(d.ConsumptionDate), MONTH(d.ConsumptionDate), 1) = mc.MonthStartDate
     );
 END;
 
 GO
 
-CREATE TRIGGER trg_AutoGenerateBill
-ON MonthlyConsumption
-AFTER INSERT, UPDATE
+CREATE OR ALTER TRIGGER trg_Update_ConsumerTimestamp
+ON Consumer
+AFTER UPDATE
 AS
 BEGIN
-    EXEC sp_GenerateMonthlyBills;
+    SET NOCOUNT ON;
+    UPDATE c
+    SET 
+        UpdatedAt = SYSUTCDATETIME()
+    FROM Consumer c
+    INNER JOIN inserted i ON c.ConsumerID = i.ConsumerID;
 END;
 
 GO
 
-CREATE TABLE ConsumerLogin (
-    ConsumerLoginID INT IDENTITY(1,1) PRIMARY KEY,
-    ConsumerID INT NOT NULL UNIQUE REFERENCES Consumer(ConsumerID) ON DELETE CASCADE,
-    Username NVARCHAR(50) NOT NULL UNIQUE,
-    Password NVARCHAR(255) NOT NULL,
-    LastLogin DATETIME2(3) NULL,
-    IsVerified BIT DEFAULT 0,
-    Status NVARCHAR(20) DEFAULT 'Active' 
-        CHECK (Status IN ('Active', 'Inactive'))
-);
+-----CREATE PROCEDURES-----
+
+CREATE OR ALTER PROCEDURE sp_GenerateMonthlyBills
+    @MeterID NVARCHAR(50) = NULL
+AS
+BEGIN
+    SET NOCOUNT ON;
+    DECLARE @Target TABLE (MeterID NVARCHAR(50), MonthStartDate DATE);
+    IF @MeterID IS NOT NULL
+    BEGIN
+        INSERT INTO @Target (MeterID, MonthStartDate)
+        SELECT DISTINCT MeterID, MonthStartDate
+        FROM MonthlyConsumption
+        WHERE MeterID = @MeterID;
+    END
+    ELSE
+    BEGIN
+        INSERT INTO @Target (MeterID, MonthStartDate)
+        SELECT MeterID, MonthStartDate FROM MonthlyConsumption;
+    END
+    ;WITH BillData AS (
+        SELECT
+            mc.MeterID,
+            mc.MonthStartDate,
+            mc.ConsumptionkWh,
+            m.Category,
+            t.BaseRate,
+            ts.RatePerKwh AS SlabRate,
+            t.TaxRate,
+            CAST(
+                mc.ConsumptionkWh * (1 + t.BaseRate) * (1 + ts.RatePerKwh) * (1 + t.TaxRate)
+                AS DECIMAL(18,2)
+            ) AS Amount
+        FROM MonthlyConsumption mc
+        INNER JOIN Meter m ON mc.MeterID = m.MeterSerialNo
+        INNER JOIN Consumer c ON m.ConsumerID = c.ConsumerID
+        INNER JOIN Tariff t ON c.TariffID = t.TariffID
+        INNER JOIN TariffSlab ts 
+            ON ts.TariffID = t.TariffID 
+            AND mc.ConsumptionkWh BETWEEN ts.FromKwh AND ts.ToKwh
+        WHERE EXISTS (
+            SELECT 1 FROM @Target t2
+            WHERE t2.MeterID = mc.MeterID AND t2.MonthStartDate = mc.MonthStartDate
+        )
+    )
+    MERGE Bill AS target
+    USING BillData AS src
+        ON target.MeterID = src.MeterID AND target.MonthStartDate = src.MonthStartDate
+    WHEN MATCHED THEN
+        UPDATE SET 
+            target.MonthlyConsumptionkWh = src.ConsumptionkWh,
+            target.BaseRate = src.BaseRate,
+            target.SlabRate = src.SlabRate,
+            target.TaxRate = src.TaxRate,
+            target.Category = src.Category,
+            target.Amount = src.Amount,
+            target.Status = 'Pending',
+            target.GeneratedAt = SYSUTCDATETIME()
+    WHEN NOT MATCHED THEN
+        INSERT (MeterID, MonthStartDate, MonthlyConsumptionkWh, Category, BaseRate, SlabRate, TaxRate, Amount, Status, GeneratedAt)
+        VALUES (src.MeterID, src.MonthStartDate, src.ConsumptionkWh, src.Category, src.BaseRate, src.SlabRate, src.TaxRate, src.Amount, 'Pending', SYSUTCDATETIME());
+END;
 
 GO
+
+-----INSERT DATA INTO TABLES-----
 
 INSERT INTO Users (Username, Password, DisplayName, Email, Phone, LastLogin, Status)
 VALUES
@@ -308,7 +358,11 @@ VALUES
 ('MTR2001', '2025-11-03', 16.0),
 ('MTR3001', '2025-11-01', 45.5),
 ('MTR3001', '2025-11-02', 46.3),
-('MTR3001', '2025-11-03', 47.1);
+('MTR3001', '2025-11-03', 47.1),
+('MTR3001', '2025-10-30', 32),
+('MTR3001', '2025-11-20', 20.5),
+('MTR2001', '2025-11-15', 12.5),
+('MTR2001', '2025-10-16', 9.5);
 
 GO
 
@@ -321,6 +375,8 @@ VALUES
 
 GO
 
+-----VIEW TABLES-----
+
 SELECT * FROM Meter
 SELECT * FROM Users
 SELECT * FROM OrgUnit
@@ -331,3 +387,18 @@ SELECT * FROM DailyConsumption
 SELECT * FROM MonthlyConsumption
 SELECT * FROM Bill
 SELECT * FROM ConsumerLogin
+
+GO
+
+-----DROP TABLES IF NEEDED-----
+
+DROP TABLE Meter
+DROP TABLE Users
+DROP TABLE OrgUnit
+DROP TABLE Tariff 
+DROP TABLE TariffSlab
+DROP TABLE Consumer
+DROP TABLE DailyConsumption
+DROP TABLE MonthlyConsumption
+DROP TABLE Bill
+DROP TABLE ConsumerLogin

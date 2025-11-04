@@ -1,0 +1,6 @@
+@AMIProjectAPI_HostAddress = http://localhost:5013
+
+GET {{AMIProjectAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
