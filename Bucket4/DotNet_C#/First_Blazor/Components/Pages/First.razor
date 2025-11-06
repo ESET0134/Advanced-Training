@@ -1,0 +1,18 @@
+﻿@page "/First"
+@inherits FirstBase
+
+<h3>This is my First Blazor Project!!!</h3>
+
+<ul>
+    @foreach (var item in Employees)
+    {
+        if (@item.Id >1 && @item.Id <=3)
+        {
+            <p>Employee : @item.Id</p>
+            <li>ID: @item.Id</li>
+            <li>NAME: @item.Name</li>
+            <li>DESIGNATION: @item.Position</li>
+            <p></p>
+        }
+    }
+</ul>
