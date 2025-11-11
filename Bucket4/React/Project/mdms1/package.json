@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://eset0134.github.io/mdms1",
+  "homepage": "https://eset0134.github.io/mdms/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

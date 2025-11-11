@@ -4,7 +4,7 @@ import svgr from 'vite-plugin-svgr';
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/mdms1/',
+  base: '/mdms/',
   plugins: [
     svgr(),
     react({
