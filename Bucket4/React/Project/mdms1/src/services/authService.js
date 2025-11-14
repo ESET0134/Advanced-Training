@@ -28,30 +28,27 @@ const ENTERPRISE_USER = {
 
 export const authService = {
   init() {
-  const stored = localStorage.getItem(STORAGE_KEY);
-  let users = [];
+    const stored = localStorage.getItem(STORAGE_KEY);
+    let users = [];
 
-  try {
-    const parsed = JSON.parse(stored);
+    try {
+      const parsed = JSON.parse(stored);
 
-    // Accept only valid array of users
-    if (Array.isArray(parsed)) {
-      users = parsed;
+      if (Array.isArray(parsed)) {
+        users = parsed;
+      }
+    } catch {
+      users = [];
     }
-  } catch {
-    users = [];
-  }
 
-  // Add missing default users
-  const roles = users.map(u => u.role);
+    const roles = users.map((u) => u.role);
 
-  if (!roles.includes('enduser')) users.push(DEFAULT_USER);
-  if (!roles.includes('zone')) users.push(ZONE_USER);
-  if (!roles.includes('enterprise')) users.push(ENTERPRISE_USER);
+    if (!roles.includes('enduser')) users.push(DEFAULT_USER);
+    if (!roles.includes('zone')) users.push(ZONE_USER);
+    if (!roles.includes('enterprise')) users.push(ENTERPRISE_USER);
 
-  // ALWAYS save only array of 3 users
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(users));
-},
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(users));
+  },
 
   login({ email, password, rememberMe }) {
     this.init();
