@@ -3,24 +3,31 @@
   "WorkspaceRootPath": "C:\\Users\\HP\\OneDrive\\Desktop\\Training\\Advanced-Training\\Bucket4\\DotNet_C#\\Day4\\College_App\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{57FC1BB8-80CB-4EE9-953D-F3246A5A38F6}|College_App.csproj|c:\\users\\hp\\onedrive\\desktop\\training\\advanced-training\\bucket4\\dotnet_c#\\day4\\college_app\\data\\config\\studentconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{57FC1BB8-80CB-4EE9-953D-F3246A5A38F6}|College_App.csproj|solutionrelative:data\\config\\studentconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EB5A35BF-9840-459E-8260-C039E6D521ED}|..\\TestingProject\\TestingProject.csproj|c:\\users\\hp\\onedrive\\desktop\\training\\advanced-training\\bucket4\\dotnet_c#\\day4\\testingproject\\testclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{57FC1BB8-80CB-4EE9-953D-F3246A5A38F6}|College_App.csproj|c:\\users\\hp\\onedrive\\desktop\\training\\advanced-training\\bucket4\\dotnet_c#\\day4\\college_app\\model\\studentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{57FC1BB8-80CB-4EE9-953D-F3246A5A38F6}|College_App.csproj|solutionrelative:model\\studentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{57FC1BB8-80CB-4EE9-953D-F3246A5A38F6}|College_App.csproj|c:\\users\\hp\\onedrive\\desktop\\training\\advanced-training\\bucket4\\dotnet_c#\\day4\\college_app\\controllers\\collegeapp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{57FC1BB8-80CB-4EE9-953D-F3246A5A38F6}|College_App.csproj|solutionrelative:controllers\\collegeapp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{57FC1BB8-80CB-4EE9-953D-F3246A5A38F6}|College_App.csproj|c:\\users\\hp\\onedrive\\desktop\\training\\advanced-training\\bucket4\\dotnet_c#\\day4\\college_app\\data\\collegedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{57FC1BB8-80CB-4EE9-953D-F3246A5A38F6}|College_App.csproj|solutionrelative:data\\collegedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{57FC1BB8-80CB-4EE9-953D-F3246A5A38F6}|College_App.csproj|c:\\users\\hp\\onedrive\\desktop\\training\\advanced-training\\bucket4\\dotnet_c#\\day4\\college_app\\data\\course.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{57FC1BB8-80CB-4EE9-953D-F3246A5A38F6}|College_App.csproj|solutionrelative:data\\course.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{57FC1BB8-80CB-4EE9-953D-F3246A5A38F6}|College_App.csproj|c:\\users\\hp\\onedrive\\desktop\\training\\advanced-training\\bucket4\\dotnet_c#\\day4\\college_app\\data\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{57FC1BB8-80CB-4EE9-953D-F3246A5A38F6}|College_App.csproj|solutionrelative:data\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{57FC1BB8-80CB-4EE9-953D-F3246A5A38F6}|College_App.csproj|c:\\users\\hp\\onedrive\\desktop\\training\\advanced-training\\bucket4\\dotnet_c#\\day4\\college_app\\controllers\\collegeapp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{57FC1BB8-80CB-4EE9-953D-F3246A5A38F6}|College_App.csproj|solutionrelative:controllers\\collegeapp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{57FC1BB8-80CB-4EE9-953D-F3246A5A38F6}|College_App.csproj|c:\\users\\hp\\onedrive\\desktop\\training\\advanced-training\\bucket4\\dotnet_c#\\day4\\college_app\\data\\config\\studentconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{57FC1BB8-80CB-4EE9-953D-F3246A5A38F6}|College_App.csproj|solutionrelative:data\\config\\studentconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{57FC1BB8-80CB-4EE9-953D-F3246A5A38F6}|College_App.csproj|c:\\users\\hp\\onedrive\\desktop\\training\\advanced-training\\bucket4\\dotnet_c#\\day4\\college_app\\data\\course.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{57FC1BB8-80CB-4EE9-953D-F3246A5A38F6}|College_App.csproj|solutionrelative:data\\course.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,24 +37,48 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "studentDTO.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\OneDrive\\Desktop\\Training\\Advanced-Training\\Bucket4\\DotNet_C#\\Day4\\College_App\\Model\\studentDTO.cs",
+              "RelativeDocumentMoniker": "Model\\studentDTO.cs",
+              "ToolTip": "C:\\Users\\HP\\OneDrive\\Desktop\\Training\\Advanced-Training\\Bucket4\\DotNet_C#\\Day4\\College_App\\Model\\studentDTO.cs",
+              "RelativeToolTip": "Model\\studentDTO.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-19T05:24:50.757Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "TestClass.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\OneDrive\\Desktop\\Training\\Advanced-Training\\Bucket4\\DotNet_C#\\Day4\\TestingProject\\TestClass.cs",
+              "RelativeDocumentMoniker": "..\\TestingProject\\TestClass.cs",
+              "ToolTip": "C:\\Users\\HP\\OneDrive\\Desktop\\Training\\Advanced-Training\\Bucket4\\DotNet_C#\\Day4\\TestingProject\\TestClass.cs*",
+              "RelativeToolTip": "..\\TestingProject\\TestClass.cs*",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAqwBAAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-19T04:58:43.5Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "StudentConfig.cs",
               "DocumentMoniker": "C:\\Users\\HP\\OneDrive\\Desktop\\Training\\Advanced-Training\\Bucket4\\DotNet_C#\\Day4\\College_App\\Data\\Config\\StudentConfig.cs",
               "RelativeDocumentMoniker": "Data\\Config\\StudentConfig.cs",
               "ToolTip": "C:\\Users\\HP\\OneDrive\\Desktop\\Training\\Advanced-Training\\Bucket4\\DotNet_C#\\Day4\\College_App\\Data\\Config\\StudentConfig.cs",
               "RelativeToolTip": "Data\\Config\\StudentConfig.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAwwBsAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-16T05:28:53.835Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-16T05:28:53.835Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "CollegeDBContext.cs",
               "DocumentMoniker": "C:\\Users\\HP\\OneDrive\\Desktop\\Training\\Advanced-Training\\Bucket4\\DotNet_C#\\Day4\\College_App\\Data\\CollegeDBContext.cs",
               "RelativeDocumentMoniker": "Data\\CollegeDBContext.cs",
@@ -55,25 +86,23 @@
               "RelativeToolTip": "Data\\CollegeDBContext.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-16T04:36:16.588Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-16T04:36:16.588Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "CollegeApp.cs",
               "DocumentMoniker": "C:\\Users\\HP\\OneDrive\\Desktop\\Training\\Advanced-Training\\Bucket4\\DotNet_C#\\Day4\\College_App\\Controllers\\CollegeApp.cs",
               "RelativeDocumentMoniker": "Controllers\\CollegeApp.cs",
               "ToolTip": "C:\\Users\\HP\\OneDrive\\Desktop\\Training\\Advanced-Training\\Bucket4\\DotNet_C#\\Day4\\College_App\\Controllers\\CollegeApp.cs",
               "RelativeToolTip": "Controllers\\CollegeApp.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAH0AAAAfAAAAAAAAAA==",
+              "ViewState": "AgIAACUAAAAAAAAAAAAqwCsAAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-16T04:23:41.091Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-16T04:23:41.091Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Student.cs",
               "DocumentMoniker": "C:\\Users\\HP\\OneDrive\\Desktop\\Training\\Advanced-Training\\Bucket4\\DotNet_C#\\Day4\\College_App\\Data\\Student.cs",
               "RelativeDocumentMoniker": "Data\\Student.cs",
@@ -81,12 +110,11 @@
               "RelativeToolTip": "Data\\Student.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-16T04:26:10.509Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-16T04:26:10.509Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "course.cs",
               "DocumentMoniker": "C:\\Users\\HP\\OneDrive\\Desktop\\Training\\Advanced-Training\\Bucket4\\DotNet_C#\\Day4\\College_App\\Data\\course.cs",
               "RelativeDocumentMoniker": "Data\\course.cs",
@@ -94,8 +122,11 @@
               "RelativeToolTip": "Data\\course.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-16T05:25:55.509Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-16T05:25:55.509Z"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
             },
             {
               "$type": "Bookmark",

@@ -43,6 +43,47 @@
         }
       }
     },
+    "/api/CollegeApp/{id}": {
+      "get": {
+        "tags": [
+          "CollegeApp"
+        ],
+        "operationId": "getstudentsbyid",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/studentDTO"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/studentDTO"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/studentDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/CollegeApp/Create": {
       "post": {
         "tags": [

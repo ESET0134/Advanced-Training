@@ -1,6 +1,33 @@
 [
   {
     "ContainingType": "College_App.Controllers.CollegeApp",
+    "Method": "getstudentsbyid",
+    "RelativePath": "api/CollegeApp/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "College_App.Model.studentDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "getstudentsbyid"
+  },
+  {
+    "ContainingType": "College_App.Controllers.CollegeApp",
     "Method": "CreateStudent",
     "RelativePath": "api/CollegeApp/Create",
     "HttpMethod": "POST",

@@ -39,7 +39,7 @@ namespace College_App.Controllers
             }).ToList();*/
             return Ok(students);
         }
-/*
+
         [HttpGet("{id:Int}", Name = "getstudentsbyid")]
         public ActionResult<studentDTO> getstudentsbyid(int id)
         {
@@ -62,7 +62,7 @@ namespace College_App.Controllers
             }
             return Ok(students);
         }
-*/
+
 
         [HttpPost("Create")]
         public ActionResult<studentDTO> CreateStudent([FromBody] Student Model)
